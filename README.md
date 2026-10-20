@@ -104,11 +104,16 @@ git clone https://github.com/souladah/Mythoria-projet.git
 cd Mythoria
 ```
 
-### 3. Lancer le projet
+### 3. Installer les dépendances et compiler Tailwind CSS
 
-Ouvrir `index.html` dans un navigateur ou utiliser l'extension **Live Server** de Visual Studio Code.
+```bash
+npm install
+npm run build
+```
 
-Si Tailwind CSS nécessite une compilation dans la configuration retenue, lancer également la commande de compilation définie dans le projet.
+La commande `npm run build` compile les classes Tailwind utilisées dans les pages HTML vers `css/style.css`.
+
+Pendant le développement, lancer `npm run watch` pour recompiler automatiquement après chaque modification. Ouvrir ensuite `index.html` dans un navigateur ou utiliser l'extension **Live Server** de Visual Studio Code.
 
 ## 🌐 Liens du projet
 
@@ -125,3 +130,4 @@ Projet réalisé dans le cadre d'une formation en développement web.
 - **Nom :** Mythoria
 - **Version :** 1.0.0
 - **Statut :** En cours de développement
+
