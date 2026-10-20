@@ -87,7 +87,6 @@ mythoria/
 ├── opening.html        # Ouverture des boosters
 ├── grimoire.html       # Collection de cartes
 ├── deck.html           # Gestion du deck
-├── PLANNING.md         # Planning de développement
 └── README.md           # Documentation du projet
 ```
 
@@ -96,7 +95,7 @@ mythoria/
 ### 1. Cloner le dépôt GitHub
 
 ```bash
-git clone https://github.com/souladah/Mythoria.git
+git clone https://github.com/souladah/Mythoria-projet.git
 ```
 
 ### 2. Accéder au dossier
@@ -113,7 +112,7 @@ Si Tailwind CSS nécessite une compilation dans la configuration retenue, lancer
 
 ## 🌐 Liens du projet
 
-- **Dépôt GitHub :** https://github.com/souladah/Mythoria
+- **Dépôt GitHub :** https://github.com/souladah/Mythoria-projet
 - **Site web :** à compléter après le déploiement sur Vercel.
 
 
