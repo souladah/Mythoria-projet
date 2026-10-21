@@ -8,9 +8,11 @@
 </head>
 <body class="min-h-screen bg-slate-950 bg-[url('../assets/images/Château-gothique.png')] bg-cover bg-center bg-no-repeat text-white">
 
-  <header class="border-b border-amber-200/20 bg-slate-950/80">
+  <header >
     <nav class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3" aria-label="Navigation principale">
-      <a href="./index.html" class="font-serif text-2xl font-bold tracking-wide text-amber-400">MYTHORIA</a>
+      <a href="./index.html" class="font-serif text-2xl font-bold tracking-wide text-amber-400">
+        <img src="./assets/images/logo.png" alt="" class="w-[100px] h-auto">
+      </a>
 
       <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-200">
         <a class="border-b-2 border-amber-400 py-2 text-amber-300" href="./index.html" aria-current="page">Accueil</a>
@@ -19,22 +21,39 @@
         <a class="py-2 hover:text-amber-300" href="./deck.html">Mon deck</a>
       </div>
 
-      <div class="flex items-center gap-4 text-slate-200">
-        <button type="button" aria-label="Rechercher" class="hover:text-amber-300">
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <circle cx="10.8" cy="10.8" r="6.3"></circle>
-            <path d="m16 16 4.5 4.5"></path>
-          </svg>
-        </button>
-        <a href="./grimoire.html" aria-label="Mon compte" class="hover:text-amber-300">
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <circle cx="12" cy="8" r="3.2"></circle>
-            <path d="M5.5 20c.5-3.5 2.8-5.3 6.5-5.3s6 1.8 6.5 5.3"></path>
-          </svg>
-        </a>
-      </div>
+
     </nav>
   </header>
+  <main class="relative isolate flex min-h-[calc(100vh-64px)] items-center overflow-hidden">
+    <section class="mx-auto -translate-y-28 grid w-full max-w-6xl items-center gap-10 px-6 py-16 md:grid-cols-2 md:py-24">
+      <div class="max-w-xl">
+        <img src="./assets/images/logo.png" alt="Mythoria" class="mb-7 w-full max-w-[390px]">
+        <p class="mb-5 text-xs uppercase tracking-[0.22em] text-amber-100 sm:text-sm">
+          Collectionnez <span class="mx-2 text-amber-400">·</span>
+          Combattez <span class="mx-2 text-amber-400">·</span>
+          Écrivez votre légende
+        </p>
+        <p class="mb-7 max-w-md font-serif leading-7 text-slate-200">
+          Plongez dans un univers de cartes où chaque héros,<br class="hidden sm:block">
+          chaque monstre et chaque sort peut changer le cours<br class="hidden sm:block">
+          de votre destin.
+        </p>
+        <div class="flex flex-col gap-4 sm:flex-row">
+          <a href="./shop.html" class="inline-flex items-center justify-center gap-3 rounded-md border border-amber-400 bg-amber-500 px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-amber-950/30 transition hover:bg-amber-300">
+            <span aria-hidden="true">♟</span>
+            Découvrir les boosters
+            <span aria-hidden="true">→</span>
+          </a>
+          <a href="./grimoire.html" class="inline-flex items-center justify-center gap-3 rounded-md border border-amber-400 px-5 py-3 text-sm text-amber-50 transition hover:bg-amber-400/10">
+            <span aria-hidden="true">▢</span>
+            Ouvrir mon grimoire
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+      <div aria-hidden="true" class="hidden md:block"></div>
+    </section>
+  </main>
 
 </body>
 </html>
