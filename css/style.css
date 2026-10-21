@@ -408,9 +408,6 @@
       background-color: color-mix(in oklab, var(--color-slate-950) 90%, transparent);
     }
   }
-  .bg-\[url\(\'\.\.\/assets\/images\/Château-gothique\.png\'\)\] {
-    background-image: url('../assets/images/Château-gothique.png');
-  }
   .bg-cover {
     background-size: cover;
   }
@@ -629,6 +626,9 @@
       grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
+}
+body {
+  background-image: url("../assets/images/Château-gothique.png");
 }
 @property --tw-translate-x {
   syntax: "*";
