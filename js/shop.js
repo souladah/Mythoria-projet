@@ -30,7 +30,9 @@ let panierProduits = {};
 
 
 let total = 0;      
-
+const messagePanier   = document.querySelector('#cart-empty');
+const boutonVider     = document.querySelector('#clear-cart');
+const boutonCommander = document.querySelector('#checkout');
 function afficherPanier() {
   panier.innerHTML = '';
   total = 0;
@@ -55,8 +57,25 @@ function afficherPanier() {
 
     panier.appendChild(li);
   }
+  
 
   totalSpan.textContent = formaterPrix(total);
+  let nombreArticles = 0;
+  for (const id in panierProduits) {
+    nombreArticles += panierProduits[id];
+  }
+
+  compteurSpan.textContent = '(' + nombreArticles + (nombreArticles === 1 ? ' article' : ' articles') + ')';
+
+  if (nombreArticles === 0) {
+    messagePanier.classList.remove('hidden');
+    boutonVider.disabled = true;
+    boutonCommander.disabled = true;
+  } else {
+    messagePanier.classList.add('hidden');
+    boutonVider.disabled = false;
+    boutonCommander.disabled = false;
+  }
 }
 function ajouterProduit(id, quantite) {
   const quantiteActuelle = panierProduits[id] || 0;
