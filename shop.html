@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Choisissez vos boosters Mythoria et préparez votre prochaine aventure.">
+  <title>Boutique — Mythoria</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="./js/shop.js" defer></script>
+</head>
+<body class="min-h-screen bg-slate-950 bg-fixed bg-cover bg-center bg-no-repeat text-white" style="background-image: url('./assets/images/Château-gothique.png')">
+
+  <header >
+    <nav class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3" aria-label="Navigation principale">
+      <a href="./index.html" class="font-serif text-2xl font-bold tracking-wide text-amber-400">
+        <img src="./assets/images/logo.png" alt="" class="w-[100px] h-auto">
+      </a>
+
+      <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-200">
+        <a class="py-2 hover:text-amber-300 " href="./index.html" aria-current="page">Accueil</a>
+        <a class="border-b-2 border-amber-400 py-2 text-amber-300" href="./shop.html">Boutique</a>
+        <a class="py-2 hover:text-amber-300" href="./grimoire.html">Grimoire</a>
+        <a class="py-2 hover:text-amber-300" href="./deck.html">Mon deck</a>
+      </div>
+
+
+    </nav>
+  </header>
+
+  
+
+  <footer class="border-t border-amber-400/20 bg-slate-950/90">
+    <div class="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-10 sm:flex-row sm:items-center sm:justify-between">
+      <div class="flex items-center gap-4">
+        <a href="./index.html" aria-label="Mythoria, accueil">
+          <img src="./assets/images/logo.png" alt="Mythoria" class="w-24">
+        </a>
+        <p class="max-w-xs text-sm leading-6 text-slate-400">Un univers de cartes à collectionner, de magie et de légendes.</p>
+      </div>
+      <nav aria-label="Liens de pied de page" class="flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-300">
+        <a href="./shop.html" class="transition hover:text-amber-300">Boutique</a>
+        <a href="./opening.html" class="transition hover:text-amber-300">Ouverture</a>
+        <a href="./grimoire.html" class="transition hover:text-amber-300">Grimoire</a>
+        <a href="./deck.html" class="transition hover:text-amber-300">Mon deck</a>
+        <a href="#boosters" class="transition hover:text-amber-300">Boosters</a>
+        <a href="#categories" class="transition hover:text-amber-300">Cartes</a>
+        <a href="#cartes-legendaires" class="transition hover:text-amber-300">Légendaires</a>
+      </nav>
+    </div>
+    <div class="border-t border-white/10 px-6 py-4 text-center text-xs text-slate-500">
+      © Mythoria — Tous droits réservés.
+    </div>
+  </footer>
+</body>
+</html>
