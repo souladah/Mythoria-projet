@@ -82,6 +82,14 @@ boutonVider.addEventListener('click', function () {
   panierProduits = {};
   afficherPanier();
 });
+boutonCommander.addEventListener('click', function () {
+  if (Object.keys(panierProduits).length === 0) return;
+
+  panierProduits = {};
+  afficherPanier();
+  alert('Commande simulée avec succès. Aucun paiement effectué.');
+});
+
 function ajouterProduit(id, quantite) {
   const quantiteActuelle = panierProduits[id] || 0;
   panierProduits[id] = quantiteActuelle + quantite;
