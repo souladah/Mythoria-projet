@@ -6,7 +6,7 @@ const compteurSpan = document.querySelector('#cart-count');
 const messagePanier   = document.querySelector('#cart-empty');
 const boutonVider     = document.querySelector('#clear-cart');
 const boutonCommander = document.querySelector('#checkout');
-const notification    = document.querySelector('#cart-notice');   // ← DÉPLACÉ ICI
+const notification    = document.querySelector('#cart-notice');   
 
 const cartes = catalogue.querySelectorAll('[data-product-id]');
 
