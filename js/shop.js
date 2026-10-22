@@ -43,6 +43,11 @@ function afficherPanier() {
 
     const li = document.createElement('li');
     li.textContent = produit.titre + ' — ' + formaterPrix(produit.prix);
+    const btn = document.createElement('button');
+    btn.textContent = 'Supprimer';
+    btn.className = 'supprimer';
+    btn.dataset.id = id;
+    li.appendChild(btn);
     panier.appendChild(li);
   }
 
@@ -62,6 +67,14 @@ catalogue.addEventListener('click', function (e) {
   const id = article.dataset.productId;
 
   ajouterProduit(id);
+});
+panier.addEventListener('click', function (e) {
+  if (!e.target.classList.contains('supprimer')) return;
+
+  const id = e.target.dataset.id;
+  delete panierProduits[id];
+
+  afficherPanier();
 });
 
 
