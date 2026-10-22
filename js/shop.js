@@ -48,3 +48,21 @@ function afficherPanier() {
 
   totalSpan.textContent = formaterPrix(total);
 }
+
+function ajouterProduit(id) {
+  panierProduits[id] = 1;  
+  afficherPanier();
+}
+
+catalogue.addEventListener('click', function (e) {
+  const bouton = e.target.closest('[data-add-to-cart]');
+  if (!bouton) return;
+
+  const article = bouton.closest('[data-product-id]');
+  const id = article.dataset.productId;
+
+  ajouterProduit(id);
+});
+
+
+afficherPanier();
