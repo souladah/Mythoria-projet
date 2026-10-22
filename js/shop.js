@@ -36,26 +36,31 @@ function afficherPanier() {
   total = 0;
 
   for (const id in panierProduits) {
-    const produit = produits[id];        
-    if (!produit) continue;              
+    const produit = produits[id];
+    if (!produit) continue;
 
-    total += produit.prix;
+    const quantite  = panierProduits[id];
+    const prixLigne = produit.prix * quantite;  
+
+    total += prixLigne;        
 
     const li = document.createElement('li');
-    li.textContent = produit.titre + ' — ' + formaterPrix(produit.prix);
+    li.textContent = produit.titre + ' × ' + quantite + ' — ' + formaterPrix(prixLigne);
+
     const btn = document.createElement('button');
     btn.textContent = 'Supprimer';
     btn.className = 'supprimer';
     btn.dataset.id = id;
     li.appendChild(btn);
+
     panier.appendChild(li);
   }
 
   totalSpan.textContent = formaterPrix(total);
 }
-
-function ajouterProduit(id) {
-  panierProduits[id] = 1;  
+function ajouterProduit(id, quantite) {
+  const quantiteActuelle = panierProduits[id] || 0;
+  panierProduits[id] = quantiteActuelle + quantite;
   afficherPanier();
 }
 
@@ -66,7 +71,10 @@ catalogue.addEventListener('click', function (e) {
   const article = bouton.closest('[data-product-id]');
   const id = article.dataset.productId;
 
-  ajouterProduit(id);
+  const inputQuantite = article.querySelector('[data-quantity]');
+  const quantite = Number(inputQuantite.value);
+
+  ajouterProduit(id, quantite);
 });
 panier.addEventListener('click', function (e) {
   if (!e.target.classList.contains('supprimer')) return;
