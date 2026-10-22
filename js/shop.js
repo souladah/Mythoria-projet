@@ -1,5 +1,7 @@
 const catalogue    = document.querySelector('#boosters');   
-
+const panier       = document.querySelector('#cart-items');
+const totalSpan    = document.querySelector('#cart-total');
+const compteurSpan = document.querySelector('#cart-count');
 
 const cartes = catalogue.querySelectorAll('[data-product-id]');
 
@@ -24,15 +26,25 @@ function formaterPrix(prix) {
   return prix.toFixed(2).replace('.', ',') + ' €';
 }
 
-
-const panier       = document.querySelector('#cart-items');   
-const totalSpan    = document.querySelector('#cart-total');  
+let panierProduits = {}; 
 
 
+let total = 0;      
 
 function afficherPanier() {
   panier.innerHTML = '';
-  totalSpan.textContent = formaterPrix(0);
-}
+  total = 0;
 
-afficherPanier();          
+  for (const id in panierProduits) {
+    const produit = produits[id];        
+    if (!produit) continue;              
+
+    total += produit.prix;
+
+    const li = document.createElement('li');
+    li.textContent = produit.titre + ' — ' + formaterPrix(produit.prix);
+    panier.appendChild(li);
+  }
+
+  totalSpan.textContent = formaterPrix(total);
+}
