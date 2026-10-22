@@ -19,3 +19,20 @@ cartes.forEach(function (carte) {
   };
 });
 
+
+function formaterPrix(prix) {
+  return prix.toFixed(2).replace('.', ',') + ' €';
+}
+
+
+const panier       = document.querySelector('#cart-items');   
+const totalSpan    = document.querySelector('#cart-total');  
+
+
+
+function afficherPanier() {
+  panier.innerHTML = '';
+  totalSpan.textContent = formaterPrix(0);
+}
+
+afficherPanier();          
