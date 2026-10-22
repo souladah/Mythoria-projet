@@ -76,11 +76,12 @@ function afficherPanier() {
     boutonVider.disabled = false;
     boutonCommander.disabled = false;
   }
-  boutonVider.addEventListener('click', function () {
+  
+}
+boutonVider.addEventListener('click', function () {
   panierProduits = {};
   afficherPanier();
 });
-}
 function ajouterProduit(id, quantite) {
   const quantiteActuelle = panierProduits[id] || 0;
   panierProduits[id] = quantiteActuelle + quantite;
