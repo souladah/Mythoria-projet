@@ -1,7 +1,12 @@
-const catalogue    = document.querySelector('#boosters');   
+const catalogue    = document.querySelector('#boosters');
 const panier       = document.querySelector('#cart-items');
 const totalSpan    = document.querySelector('#cart-total');
 const compteurSpan = document.querySelector('#cart-count');
+
+const messagePanier   = document.querySelector('#cart-empty');
+const boutonVider     = document.querySelector('#clear-cart');
+const boutonCommander = document.querySelector('#checkout');
+const notification    = document.querySelector('#cart-notice');   // ← DÉPLACÉ ICI
 
 const cartes = catalogue.querySelectorAll('[data-product-id]');
 
@@ -25,14 +30,33 @@ cartes.forEach(function (carte) {
 function formaterPrix(prix) {
   return prix.toFixed(2).replace('.', ',') + ' €';
 }
-
+function afficherMessage(texte) {
+  notification.textContent = texte;
+  notification.classList.remove('hidden');
+}
 let panierProduits = {}; 
 
 
 let total = 0;      
-const messagePanier   = document.querySelector('#cart-empty');
-const boutonVider     = document.querySelector('#clear-cart');
-const boutonCommander = document.querySelector('#checkout');
+
+const CLE_STOCKAGE = 'mythoria-cart-v1';
+function sauvegarderPanier() {
+  localStorage.setItem(CLE_STOCKAGE, JSON.stringify(panierProduits));
+}
+
+function chargerPanier() {
+  const texte = localStorage.getItem(CLE_STOCKAGE);
+  if (!texte) return;
+
+  const sauvegarde = JSON.parse(texte);
+
+  for (const id in sauvegarde) {
+    const quantite = sauvegarde[id];
+    if (produits[id] && quantite >= 1 && quantite <= 99) {
+      panierProduits[id] = quantite;
+    }
+  }
+}
 function afficherPanier() {
   panier.innerHTML = '';
   total = 0;
@@ -81,19 +105,23 @@ function afficherPanier() {
 boutonVider.addEventListener('click', function () {
   panierProduits = {};
   afficherPanier();
+  sauvegarderPanier();
+  afficherMessage('Le panier a été vidé.');
 });
 boutonCommander.addEventListener('click', function () {
   if (Object.keys(panierProduits).length === 0) return;
 
   panierProduits = {};
   afficherPanier();
-  alert('Commande simulée avec succès. Aucun paiement effectué.');
+  sauvegarderPanier();
+  afficherMessage('Commande simulée avec succès. Aucun paiement effectué.');
 });
-
 function ajouterProduit(id, quantite) {
-  const quantiteActuelle = panierProduits[id] || 0;
+ const quantiteActuelle = panierProduits[id] || 0;
   panierProduits[id] = quantiteActuelle + quantite;
   afficherPanier();
+  sauvegarderPanier();
+  afficherMessage(produits[id].titre + ' ajouté au panier.');  
 }
 
 catalogue.addEventListener('click', function (e) {
@@ -115,7 +143,10 @@ panier.addEventListener('click', function (e) {
   delete panierProduits[id];
 
   afficherPanier();
+  sauvegarderPanier();
+  afficherMessage('Le booster a été supprimé du panier.');
 });
 
 
+chargerPanier();
 afficherPanier();
