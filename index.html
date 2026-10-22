@@ -5,12 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mythoria</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="min-h-screen bg-slate-950 bg-fixed bg-cover bg-center bg-no-repeat text-white" style="background-image: url('./assets/images/Château-gothique.png')">
+<body class="min-h-screen bg-slate-950 bg-fixed bg-cover bg-center bg-no-repeat font-[DM_Sans] text-white antialiased selection:bg-amber-300/30" style="background-image: url('./assets/images/Château-gothique.png')">
 
   <header >
     <nav class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3" aria-label="Navigation principale">
-      <a href="./index.html" class="font-serif text-2xl font-bold tracking-wide text-amber-400">
+      <a href="./index.html" class="font-[Cinzel] text-2xl font-bold tracking-wide text-amber-400">
         <img src="./assets/images/logo.png" alt="" class="w-[100px] h-auto">
       </a>
 
@@ -25,7 +28,7 @@
     </nav>
   </header>
   <main class="relative isolate overflow-hidden">
-    <section class="mx-auto -translate-y-28 grid min-h-[calc(100vh-64px)] w-full max-w-6xl items-center gap-10 px-6 py-16 md:grid-cols-2 md:py-24">
+    <section class="mx-auto grid min-h-[calc(100vh-76px)] w-full max-w-6xl items-center gap-10 px-6 py-16 md:grid-cols-2 md:py-24">
       <div class="max-w-xl">
         <img src="./assets/images/logo.png" alt="Mythoria" class="mb-7 w-full max-w-[390px]">
         <p class="mb-5 text-xs uppercase tracking-[0.22em] text-amber-100 sm:text-sm">
@@ -33,7 +36,7 @@
           Combattez <span class="mx-2 text-amber-400">·</span>
           Écrivez votre légende
         </p>
-        <p class="mb-7 max-w-md font-serif leading-7 text-slate-200">
+        <p class="mb-7 max-w-md font-[Cinzel] leading-7 text-slate-200">
           Plongez dans un univers de cartes où chaque héros,<br class="hidden sm:block">
           chaque monstre et chaque sort peut changer le cours<br class="hidden sm:block">
           de votre destin.
@@ -56,31 +59,31 @@
     <section id="boosters" class="mx-auto w-full max-w-6xl px-6 py-16">
       <div class="mb-10 text-center">
         <p class="mb-2 text-sm uppercase tracking-[0.25em] text-amber-400">Préparez votre aventure</p>
-        <h2 class="font-serif text-3xl font-bold text-white sm:text-4xl">Nos boosters</h2>
+        <h2 class="font-[Cinzel] text-3xl font-bold text-white sm:text-4xl">Nos boosters</h2>
         <p class="mx-auto mt-4 max-w-2xl text-slate-300">Ouvrez un booster et découvrez les cartes qui écriront votre légende.</p>
       </div>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         <article class="rounded-xl border border-amber-400/30 bg-slate-950/80 p-6">
           <img src="./assets/images/booster-debutant.svg" alt="Illustration du Pack du débutant" class="mb-4 h-48 w-full rounded-lg object-cover">
-          <h3 class="mb-2 font-serif text-xl font-bold text-amber-300">Pack du débutant</h3>
+          <h3 class="mb-2 font-[Cinzel] text-xl font-bold text-amber-300">Pack du débutant</h3>
           <p class="mb-5 text-sm leading-6 text-slate-300">Un assortiment idéal pour commencer votre collection et découvrir vos premières cartes.</p>
           <a href="./shop.html" class="inline-block rounded-md border border-amber-400 px-4 py-2 text-sm text-amber-100 transition hover:bg-amber-400/10">Voir le booster →</a>
         </article>
         <article class="rounded-xl border border-amber-400/30 bg-slate-950/80 p-6">
           <img src="./assets/images/booster-legendes.svg" alt="Illustration de l’Invocation des légendes" class="mb-4 h-48 w-full rounded-lg object-cover">
-          <h3 class="mb-2 font-serif text-xl font-bold text-amber-300">Invocation des légendes</h3>
+          <h3 class="mb-2 font-[Cinzel] text-xl font-bold text-amber-300">Invocation des légendes</h3>
           <p class="mb-5 text-sm leading-6 text-slate-300">Un pack premium avec de meilleures chances de découvrir des cartes rares, épiques ou légendaires.</p>
           <a href="./shop.html" class="inline-block rounded-md border border-amber-400 px-4 py-2 text-sm text-amber-100 transition hover:bg-amber-400/10">Voir le booster →</a>
         </article>
         <article class="rounded-xl border border-amber-400/30 bg-slate-950/80 p-6">
           <img src="./assets/images/booster-obscur.svg" alt="Illustration de l’Invocation obscure" class="mb-4 h-48 w-full rounded-lg object-cover">
-          <h3 class="mb-2 font-serif text-xl font-bold text-amber-300">Invocation obscure</h3>
+          <h3 class="mb-2 font-[Cinzel] text-xl font-bold text-amber-300">Invocation obscure</h3>
           <p class="mb-5 text-sm leading-6 text-slate-300">Un booster consacré aux monstres, aux serviteurs des Ténèbres et aux sorts interdits.</p>
           <a href="./shop.html" class="inline-block rounded-md border border-amber-400 px-4 py-2 text-sm text-amber-100 transition hover:bg-amber-400/10">Voir le booster →</a>
         </article>
         <article class="rounded-xl border border-amber-400/30 bg-slate-950/80 p-6">
           <img src="./assets/images/booster-chance.svg" alt="Illustration du Pack de la chance" class="mb-4 h-48 w-full rounded-lg object-cover">
-          <h3 class="mb-2 font-serif text-xl font-bold text-amber-300">Pack de la chance</h3>
+          <h3 class="mb-2 font-[Cinzel] text-xl font-bold text-amber-300">Pack de la chance</h3>
           <p class="mb-5 text-sm leading-6 text-slate-300">Un pack mystère à composition aléatoire, avec une chance de trouver une carte exceptionnelle.</p>
           <a href="./shop.html" class="inline-block rounded-md border border-amber-400 px-4 py-2 text-sm text-amber-100 transition hover:bg-amber-400/10">Voir le booster →</a>
         </article>
@@ -89,28 +92,28 @@
     <section id="categories" class="mx-auto w-full max-w-6xl px-6 py-16">
       <div class="mb-10 text-center">
         <p class="mb-2 text-sm uppercase tracking-[0.25em] text-amber-400">Explorez le monde de Mythoria</p>
-        <h2 class="font-serif text-3xl font-bold text-white sm:text-4xl">Les familles de cartes</h2>
+        <h2 class="font-[Cinzel] text-3xl font-bold text-white sm:text-4xl">Les familles de cartes</h2>
         <p class="mx-auto mt-4 max-w-2xl text-slate-300">Découvrez les héros, les créatures et les pouvoirs qui façonneront votre stratégie.</p>
       </div>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <article class="rounded-xl border border-amber-400/30 bg-slate-950/80 p-6 transition hover:-translate-y-1 hover:border-amber-300">
+        <article class="rounded-xl border border-amber-400/30 bg-slate-950/80 p-6 transition duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:border-amber-300 hover:shadow-2xl hover:shadow-amber-950/40">
           <img src="./assets/images/famille-heros.svg" alt="Illustration des héros de la Lumière" class="mb-4 aspect-[4/3] w-full rounded-lg object-cover">
-          <h3 class="mb-2 font-serif text-xl font-bold text-amber-300">Héros</h3>
+          <h3 class="mb-2 font-[Cinzel] text-xl font-bold text-amber-300">Héros</h3>
           <p class="text-sm leading-6 text-slate-300">Les champions de la Lumière combattent pour protéger le royaume.</p>
         </article>
-        <article class="rounded-xl border border-amber-400/30 bg-slate-950/80 p-6 transition hover:-translate-y-1 hover:border-amber-300">
+        <article class="rounded-xl border border-amber-400/30 bg-slate-950/80 p-6 transition duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:border-amber-300 hover:shadow-2xl hover:shadow-amber-950/40">
           <img src="./assets/images/famille-monstres.svg" alt="Illustration des monstres des Ténèbres" class="mb-4 aspect-[4/3] w-full rounded-lg object-cover">
-          <h3 class="mb-2 font-serif text-xl font-bold text-amber-300">Monstres</h3>
+          <h3 class="mb-2 font-[Cinzel] text-xl font-bold text-amber-300">Monstres</h3>
           <p class="text-sm leading-6 text-slate-300">Des créatures des Ténèbres redoutables pour renverser le combat.</p>
         </article>
-        <article class="rounded-xl border border-amber-400/30 bg-slate-950/80 p-6 transition hover:-translate-y-1 hover:border-amber-300">
+        <article class="rounded-xl border border-amber-400/30 bg-slate-950/80 p-6 transition duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:border-amber-300 hover:shadow-2xl hover:shadow-amber-950/40">
           <img src="./assets/images/famille-serviteurs.svg" alt="Illustration des serviteurs" class="mb-4 aspect-[4/3] w-full rounded-lg object-cover">
-          <h3 class="mb-2 font-serif text-xl font-bold text-amber-300">Serviteurs</h3>
+          <h3 class="mb-2 font-[Cinzel] text-xl font-bold text-amber-300">Serviteurs</h3>
           <p class="text-sm leading-6 text-slate-300">Des alliés fidèles qui soutiennent vos héros sur le champ de bataille.</p>
         </article>
-        <article class="rounded-xl border border-amber-400/30 bg-slate-950/80 p-6 transition hover:-translate-y-1 hover:border-amber-300">
+        <article class="rounded-xl border border-amber-400/30 bg-slate-950/80 p-6 transition duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:border-amber-300 hover:shadow-2xl hover:shadow-amber-950/40">
           <img src="./assets/images/famille-sorts.svg" alt="Illustration des sorts" class="mb-4 aspect-[4/3] w-full rounded-lg object-cover">
-          <h3 class="mb-2 font-serif text-xl font-bold text-amber-300">Sorts</h3>
+          <h3 class="mb-2 font-[Cinzel] text-xl font-bold text-amber-300">Sorts</h3>
           <p class="text-sm leading-6 text-slate-300">Des pouvoirs magiques capables de changer le cours d’une partie.</p>
         </article>
       </div>
@@ -118,7 +121,7 @@
     <section id="cartes-legendaires" class="mx-auto w-full max-w-6xl px-6 py-16">
       <div class="mb-10 text-center">
         <p class="mb-2 text-sm uppercase tracking-[0.25em] text-amber-400">Les trésors les plus rares</p>
-        <h2 class="font-serif text-3xl font-bold text-white sm:text-4xl">Cartes légendaires</h2>
+        <h2 class="font-[Cinzel] text-3xl font-bold text-white sm:text-4xl">Cartes légendaires</h2>
         <p class="mx-auto mt-4 max-w-2xl text-slate-300">Découvrez quelques figures mythiques de l’univers de Mythoria.</p>
       </div>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -126,7 +129,7 @@
           <img src="./assets/images/legendaire-aurelion.webp" alt="Aurelion, roi solaire, en armure dorée" class="aspect-[3/4] w-full object-cover">
           <div class="p-6">
             <p class="mb-2 text-xs uppercase tracking-[0.2em] text-amber-300">Héros · Légendaire</p>
-            <h3 class="mb-2 font-serif text-xl font-bold text-white">Aurelion, roi solaire</h3>
+            <h3 class="mb-2 font-[Cinzel] text-xl font-bold text-white">Aurelion, roi solaire</h3>
             <p class="text-sm leading-6 text-slate-300">Un roi majestueux dont la lumière rassemble les défenseurs du royaume.</p>
           </div>
         </article>
@@ -134,7 +137,7 @@
           <img src="./assets/images/legendaire-nocthar.webp" alt="Nocthar, dragon des abysses, surgissant des profondeurs" class="aspect-[3/4] w-full object-cover">
           <div class="p-6">
             <p class="mb-2 text-xs uppercase tracking-[0.2em] text-amber-300">Monstre · Légendaire</p>
-            <h3 class="mb-2 font-serif text-xl font-bold text-white">Nocthar, dragon des abysses</h3>
+            <h3 class="mb-2 font-[Cinzel] text-xl font-bold text-white">Nocthar, dragon des abysses</h3>
             <p class="text-sm leading-6 text-slate-300">Une créature antique surgie des profondeurs les plus sombres.</p>
           </div>
         </article>
@@ -142,7 +145,7 @@
           <img src="./assets/images/legendaire-eclipse.webp" alt="L’Éclipse éternelle, un sort légendaire au-dessus d’un paysage sombre" class="aspect-[3/4] w-full object-cover">
           <div class="p-6">
             <p class="mb-2 text-xs uppercase tracking-[0.2em] text-amber-300">Sort · Légendaire</p>
-            <h3 class="mb-2 font-serif text-xl font-bold text-white">L’Éclipse éternelle</h3>
+            <h3 class="mb-2 font-[Cinzel] text-xl font-bold text-white">L’Éclipse éternelle</h3>
             <p class="text-sm leading-6 text-slate-300">Un sort ancien qui enveloppe le champ de bataille d’une nuit magique.</p>
           </div>
         </article>

@@ -6,13 +6,18 @@
   <meta name="description" content="Choisissez vos boosters Mythoria et préparez votre prochaine aventure.">
   <title>Boutique — Mythoria</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <script src="./js/shop.js" defer></script>
 </head>
-<body class="min-h-screen bg-slate-950 bg-fixed bg-cover bg-center bg-no-repeat text-white" style="background-image: url('./assets/images/Château-gothique.png')">
+<body class="min-h-screen bg-slate-950 bg-fixed bg-cover bg-center bg-no-repeat font-[DM_Sans] text-white antialiased selection:bg-amber-300/30" style="background-image: url('./assets/images/Château-gothique.png')">
 
   <header >
     <nav class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3" aria-label="Navigation principale">
-      <a href="./index.html" class="font-serif text-2xl font-bold tracking-wide text-amber-400">
+      <a href="./index.html" class="font-[Cinzel] text-2xl font-bold tracking-wide text-amber-400">
         <img src="./assets/images/logo.png" alt="" class="w-[100px] h-auto">
       </a>
 
@@ -31,17 +36,17 @@
   <section id="boosters" class="mx-auto w-full max-w-7xl px-6 py-16 md:py-24">
     <header class="mx-auto mb-14 max-w-3xl text-center">
       <p class="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-amber-300 sm:text-sm">La boutique de Mythoria</p>
-      <h1 class="font-serif text-4xl font-bold tracking-wide text-amber-300 sm:text-5xl">Nos boosters</h1>
+      <h1 class="font-[Cinzel] text-4xl font-bold tracking-wide text-amber-300 sm:text-5xl animate-pulse">Nos boosters</h1>
       <p class="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-300">Choisissez votre prochain booster et partez à la découverte des héros, des monstres et des légendes de Mythoria.</p>
     </header>
 
     <div class="grid items-stretch gap-6 sm:grid-cols-2 xl:grid-cols-4">
-      <article data-product-id="debutant" data-product-name="Beginner Pack — Pack du débutant" data-price="4.99" class="group flex flex-col overflow-hidden rounded-2xl border border-amber-400/30 bg-slate-950/90 p-5 shadow-xl shadow-black/30 transition hover:-translate-y-1 hover:border-amber-300/70">
+      <article data-product-id="debutant" data-product-name="Beginner Pack — Pack du débutant" data-price="4.99" class="group flex flex-col overflow-hidden rounded-2xl border border-amber-400/30 bg-slate-950/90 p-5 shadow-xl shadow-black/30 transition duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:border-amber-300/70 hover:shadow-2xl hover:shadow-amber-950/40">
         <div class="mb-5 flex h-48 items-center justify-center rounded-xl border border-amber-300/20 bg-gradient-to-br from-amber-950/50 to-slate-950 p-3">
           <img src="./assets/images/booster-debutant.svg" alt="Illustration du Beginner Pack, Pack du débutant" class="h-full w-full object-contain transition group-hover:scale-105">
         </div>
         <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-amber-400">Pour les nouveaux joueurs</p>
-        <h2 class="font-serif text-xl font-bold text-white">Beginner Pack</h2>
+        <h2 class="font-[Cinzel] text-xl font-bold text-white">Beginner Pack</h2>
         <p class="mb-3 text-sm font-medium text-amber-200">Pack du débutant</p>
         <p class="text-sm leading-6 text-slate-300">Un assortiment idéal pour commencer, avec des cartes communes et quelques cartes de rareté supérieure.</p>
         <div class="mt-4 rounded-lg border border-white/10 bg-white/5 p-3 text-sm"><p class="font-semibold text-slate-200">4 cartes</p><p class="mt-1 text-slate-400">Communes, inhabituelles et rares</p></div>
@@ -53,12 +58,12 @@
         </div>
       </article>
 
-      <article data-product-id="legendes" data-product-name="Summoning of the Legends — Invocation des légendes" data-price="9.99" class="group flex flex-col overflow-hidden rounded-2xl border border-amber-400/30 bg-slate-950/90 p-5 shadow-xl shadow-black/30 transition hover:-translate-y-1 hover:border-amber-300/70">
+      <article data-product-id="legendes" data-product-name="Summoning of the Legends — Invocation des légendes" data-price="9.99" class="group flex flex-col overflow-hidden rounded-2xl border border-amber-400/30 bg-slate-950/90 p-5 shadow-xl shadow-black/30 transition duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:border-amber-300/70 hover:shadow-2xl hover:shadow-amber-950/40">
         <div class="mb-5 flex h-48 items-center justify-center rounded-xl border border-amber-300/20 bg-gradient-to-br from-yellow-950/50 to-slate-950 p-3">
           <img src="./assets/images/booster-legendes.svg" alt="Illustration du Summoning of the Legends, Invocation des légendes" class="h-full w-full object-contain transition group-hover:scale-105">
         </div>
         <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-amber-400">Édition premium</p>
-        <h2 class="font-serif text-xl font-bold text-white">Summoning of the Legends</h2>
+        <h2 class="font-[Cinzel] text-xl font-bold text-white">Summoning of the Legends</h2>
         <p class="mb-3 text-sm font-medium text-amber-200">Invocation des légendes</p>
         <p class="text-sm leading-6 text-slate-300">Un pack premium offrant une meilleure probabilité d’obtenir des cartes rares, épiques ou légendaires.</p>
         <div class="mt-4 rounded-lg border border-white/10 bg-white/5 p-3 text-sm"><p class="font-semibold text-slate-200">4 cartes</p><p class="mt-1 text-slate-400">Communes, rares, épiques et légendaires</p></div>
@@ -75,7 +80,7 @@
           <img src="./assets/images/booster-obscur.svg" alt="Illustration du Dark Summoning, Invocation obscure" class="h-full w-full object-contain transition group-hover:scale-105">
         </div>
         <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-violet-300">Édition ténébreuse</p>
-        <h2 class="font-serif text-xl font-bold text-white">Dark Summoning</h2>
+        <h2 class="font-[Cinzel] text-xl font-bold text-white">Dark Summoning</h2>
         <p class="mb-3 text-sm font-medium text-violet-200">Invocation obscure</p>
         <p class="text-sm leading-6 text-slate-300">Un booster thématique consacré aux monstres, aux serviteurs des Ténèbres et aux sorts interdits.</p>
         <div class="mt-4 rounded-lg border border-white/10 bg-white/5 p-3 text-sm"><p class="font-semibold text-slate-200">4 cartes</p><p class="mt-1 text-slate-400">Monstres, serviteurs et sorts interdits</p></div>
@@ -92,7 +97,7 @@
           <img src="./assets/images/booster-chance.svg" alt="Illustration du Lucky Pack, Pack de la chance" class="h-full w-full object-contain transition group-hover:scale-105">
         </div>
         <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-emerald-300">Pack mystère</p>
-        <h2 class="font-serif text-xl font-bold text-white">Lucky Pack</h2>
+        <h2 class="font-[Cinzel] text-xl font-bold text-white">Lucky Pack</h2>
         <p class="mb-3 text-sm font-medium text-emerald-200">Pack de la chance</p>
         <p class="text-sm leading-6 text-slate-300">Une composition aléatoire avec une chance de découvrir une carte exceptionnelle.</p>
         <div class="mt-4 rounded-lg border border-white/10 bg-white/5 p-3 text-sm"><p class="font-semibold text-slate-200">3 cartes</p><p class="mt-1 text-slate-400">Composition aléatoire, toutes catégories possibles</p></div>
@@ -109,7 +114,7 @@
   <section id="panier" aria-labelledby="cart-title" class="mx-auto w-full max-w-7xl scroll-mt-8 px-6 pb-20 pt-8">
     <div class="mx-auto max-w-4xl overflow-hidden rounded-2xl border border-amber-300/25 bg-slate-950/95 shadow-2xl shadow-black/40">
       <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 px-6 py-6 sm:px-8">
-        <div><p class="text-xs font-semibold uppercase tracking-[0.2em] text-amber-400">Votre sélection</p><h2 id="cart-title" class="mt-2 font-serif text-3xl font-bold text-white">Mon panier <span id="cart-count" class="ml-2 text-base font-medium text-slate-400">(0 article)</span></h2></div>
+        <div><p class="text-xs font-semibold uppercase tracking-[0.2em] text-amber-400">Votre sélection</p><h2 id="cart-title" class="mt-2 font-[Cinzel] text-3xl font-bold text-white">Mon panier <span id="cart-count" class="ml-2 text-base font-medium text-slate-400">(0 article)</span></h2></div>
         <button id="clear-cart" type="button" disabled class="rounded-lg border border-slate-600 px-4 py-2 text-sm font-semibold text-slate-300 transition hover:border-amber-400 hover:text-amber-200 disabled:cursor-not-allowed disabled:opacity-40">Vider le panier</button>
       </div>
       <div class="px-6 py-6 sm:px-8">
