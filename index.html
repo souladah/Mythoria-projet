@@ -5,20 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mythoria</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="min-h-screen bg-slate-950 bg-fixed bg-cover bg-center bg-no-repeat font-[DM_Sans] text-white antialiased selection:bg-amber-300/30" style="background-image: url('./assets/images/Château-gothique.png')">
-
-  <header class="sticky top-0 z-50 border-b border-amber-300/15 bg-slate-950/75 shadow-lg shadow-black/20 backdrop-blur-xl">
-    <nav class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-3" aria-label="Navigation principale">
-      <a href="./index.html" class="font-[Cinzel] text-2xl font-bold tracking-wide text-amber-400">
-        <img src="./assets/images/logo.png" alt="" class="w-[100px] h-auto">
+<body class="min-h-screen bg-[url('./assets/images/Château-gothique.png')] bg-fixed bg-cover bg-no-repeat selection:bg-amber-300/30 ">
+  <header class="sticky top-0 border-b border-amber-300/20 z-5 bg-slate-950">
+    <nav class="flex w-auto h-auto min-h-[70px] px-10 flex-wrap justify-between align-center ">
+      <a href="./index.html" class="mt-[10px]" >
+        <img src="./assets/images/logo.png" alt="" class="w-[100px] h-auto ">
       </a>
 
-      <div class="flex flex-wrap items-center justify-center gap-4 text-xs uppercase tracking-[0.16em] text-slate-200 sm:gap-8 sm:text-sm">
-        <a class="border-b border-amber-300 py-2 text-amber-200 transition hover:text-amber-100" href="./index.html" aria-current="page">Accueil</a>
+      <div class="flex flex-wrap items-center justify-center gap-4 text-xs uppercase tracking-[1px] text-slate-200 ">
+        <a class="py-2 border-b border-amber-300 text-amber-300 transition hover:text-amber-100" href="./index.html" aria-current="page">Accueil</a>
         <a class="py-2 transition hover:text-amber-300" href="./shop.html">Boutique</a>
         <a class="py-2 transition hover:text-amber-300" href="./grimoire.html">Grimoire</a>
         <a class="py-2 transition hover:text-amber-300" href="./deck.html">Mon deck</a>
