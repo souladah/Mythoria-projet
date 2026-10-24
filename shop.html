@@ -24,101 +24,96 @@
     </nav>
   </header>
 
-<main class="relative isolate overflow-hidden ">
+<main class="relative">
   <section id="boosters" class="mx-auto w-full max-w-7xl px-6 py-16 md:py-24">
-    <header class="mx-auto mb-14 max-w-3xl text-center">
-      <p class="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-amber-300 sm:text-sm">La boutique de Mythoria</p>
-      <h1 class="font-[Cinzel] text-4xl font-bold tracking-wide text-amber-300 sm:text-5xl animate-pulse">Nos boosters</h1>
-      <p class="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-300">Choisissez votre prochain booster et partez à la découverte des héros, des monstres et des légendes de Mythoria.</p>
+    <header class="mx-auto mb-14 text-center">
+      <p class="mb-4 text-xs font-semibold uppercase tracking-[4px] text-amber-300">La boutique de Mythoria</p>
+      <h1 class="text-4xl font-bold tracking-wide text-amber-300">Nos boosters</h1>
+      <p class="mx-auto mt-5 max-w-2xl leading-7 text-slate-300">Choisissez votre prochain booster et partez à la découverte des héros, des monstres et des légendes de Mythoria.</p>
     </header>
 
-    <div class="grid items-stretch gap-6 sm:grid-cols-2 xl:grid-cols-4">
-      <article data-product-id="debutant" data-product-name="Beginner Pack — Pack du débutant" data-price="4.99" class="group flex flex-col overflow-hidden rounded-2xl border border-amber-400/30 bg-slate-950/90 p-5 shadow-xl shadow-black/30 transition duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:border-amber-300/70 hover:shadow-2xl hover:shadow-amber-950/40">
-        <div class="mb-5 flex h-48 items-center justify-center rounded-xl border border-amber-300/20 bg-gradient-to-br from-amber-950/50 to-slate-950 p-3">
-          <img src="./assets/images/booster-debutant.svg" alt="Illustration du Beginner Pack, Pack du débutant" class="h-full w-full object-contain transition group-hover:scale-105">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      
+      <article class="flex flex-col overflow-hidden rounded-2xl border border-amber-400/30 bg-slate-950 p-5">
+        <div class="mb-5 flex h-48 items-center justify-center rounded-lg border border-amber-300/20 bg-slate-900 p-3">
+          <img src="./assets/images/booster-debutant.svg" alt="Pack du débutant" class="h-full  object-contain">
         </div>
         <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-amber-400">Pour les nouveaux joueurs</p>
-        <h2 class="font-[Cinzel] text-xl font-bold text-white">Beginner Pack</h2>
+        <h2 class="text-xl font-bold text-white">Beginner Pack</h2>
         <p class="mb-3 text-sm font-medium text-amber-200">Pack du débutant</p>
         <p class="text-sm leading-6 text-slate-300">Un assortiment idéal pour commencer, avec des cartes communes et quelques cartes de rareté supérieure.</p>
-        <div class="mt-4 rounded-lg border border-white/10 bg-white/5 p-3 text-sm"><p class="font-semibold text-slate-200">4 cartes</p><p class="mt-1 text-slate-400">Communes, inhabituelles et rares</p></div>
+        <div class="mt-4 rounded-lg border border-white/10 bg-white/5 p-3 text-sm">
+          <p class="font-semibold text-slate-200">4 cartes</p>
+          <p class="mt-1 text-slate-400">Communes, inhabituelles et rares</p>
+        </div>
         <div class="mt-auto pt-5">
           <p class="mb-4 text-2xl font-bold text-amber-300">4,99 €</p>
           <label for="quantity-debutant" class="mb-2 block text-sm text-slate-300">Quantité</label>
-          <input id="quantity-debutant" data-quantity type="number" min="1" max="99" value="1" inputmode="numeric" class="mb-4 w-full rounded-lg border border-amber-300/20 bg-slate-950 px-3 py-2.5 text-white outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20">
-          <button type="button" data-add-to-cart class="w-full rounded-lg bg-amber-500 px-5 py-3 text-sm font-bold text-slate-950 shadow-lg shadow-amber-950/30 transition hover:bg-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-200">Ajouter au panier</button>
+          <input id="quantity-debutant" type="number" value="1" class="mb-4 w-full rounded-lg border border-amber-300/20 bg-slate-900 px-3 py-2.5 text-white outline-none">
+          <button type="button" class="w-full rounded-lg bg-amber-500 px-5 py-3 text-sm font-bold text-slate-950 hover:bg-amber-300">Ajouter au panier</button>
         </div>
       </article>
 
-      <article data-product-id="legendes" data-product-name="Summoning of the Legends — Invocation des légendes" data-price="9.99" class="group flex flex-col overflow-hidden rounded-2xl border border-amber-400/30 bg-slate-950/90 p-5 shadow-xl shadow-black/30 transition duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:border-amber-300/70 hover:shadow-2xl hover:shadow-amber-950/40">
-        <div class="mb-5 flex h-48 items-center justify-center rounded-xl border border-amber-300/20 bg-gradient-to-br from-yellow-950/50 to-slate-950 p-3">
-          <img src="./assets/images/booster-legendes.svg" alt="Illustration du Summoning of the Legends, Invocation des légendes" class="h-full w-full object-contain transition group-hover:scale-105">
+      <article class="flex flex-col overflow-hidden rounded-2xl border border-amber-400/30 bg-slate-950 p-5">
+        <div class="mb-5 flex h-48 items-center justify-center rounded-lg border border-amber-300/20 bg-slate-900 p-3">
+          <img src="./assets/images/booster-legendes.svg" alt="Invocation des légendes" class="h-full  object-contain">
         </div>
         <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-amber-400">Édition premium</p>
-        <h2 class="font-[Cinzel] text-xl font-bold text-white">Summoning of the Legends</h2>
+        <h2 class="text-xl font-bold text-white">Summoning of the Legends</h2>
         <p class="mb-3 text-sm font-medium text-amber-200">Invocation des légendes</p>
         <p class="text-sm leading-6 text-slate-300">Un pack premium offrant une meilleure probabilité d’obtenir des cartes rares, épiques ou légendaires.</p>
-        <div class="mt-4 rounded-lg border border-white/10 bg-white/5 p-3 text-sm"><p class="font-semibold text-slate-200">4 cartes</p><p class="mt-1 text-slate-400">Communes, rares, épiques et légendaires</p></div>
+        <div class="mt-4 rounded-lg border border-white/10 bg-white/5 p-3 text-sm">
+          <p class="font-semibold text-slate-200">4 cartes</p>
+          <p class="mt-1 text-slate-400">Communes, rares, épiques et légendaires</p>
+        </div>
         <div class="mt-auto pt-5">
           <p class="mb-4 text-2xl font-bold text-amber-300">9,99 €</p>
           <label for="quantity-legendes" class="mb-2 block text-sm text-slate-300">Quantité</label>
-          <input id="quantity-legendes" data-quantity type="number" min="1" max="99" value="1" inputmode="numeric" class="mb-4 w-full rounded-lg border border-amber-300/20 bg-slate-950 px-3 py-2.5 text-white outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20">
-          <button type="button" data-add-to-cart class="w-full rounded-lg bg-amber-500 px-5 py-3 text-sm font-bold text-slate-950 shadow-lg shadow-amber-950/30 transition hover:bg-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-200">Ajouter au panier</button>
+          <input id="quantity-legendes" type="number" value="1" class="mb-4 w-full rounded-lg border border-amber-300/20 bg-slate-900 px-3 py-2.5 text-white outline-none">
+          <button type="button" class="w-full rounded-lg bg-amber-500 px-5 py-3 text-sm font-bold text-slate-950 hover:bg-amber-300">Ajouter au panier</button>
         </div>
       </article>
 
-      <article data-product-id="obscur" data-product-name="Dark Summoning — Invocation obscure" data-price="7.99" class="group flex flex-col overflow-hidden rounded-2xl border border-violet-400/30 bg-slate-950/90 p-5 shadow-xl shadow-black/30 transition hover:-translate-y-1 hover:border-violet-300/70">
-        <div class="mb-5 flex h-48 items-center justify-center rounded-xl border border-violet-300/20 bg-gradient-to-br from-violet-950/60 to-slate-950 p-3">
-          <img src="./assets/images/booster-obscur.svg" alt="Illustration du Dark Summoning, Invocation obscure" class="h-full w-full object-contain transition group-hover:scale-105">
+      <article class="flex flex-col overflow-hidden rounded-2xl border border-violet-400/30 bg-slate-950 p-5">
+        <div class="mb-5 flex h-48 items-center justify-center rounded-lg border border-violet-300/20 bg-slate-900 p-3">
+          <img src="./assets/images/booster-obscur.svg" alt="Invocation obscure" class="h-full  object-contain">
         </div>
         <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-violet-300">Édition ténébreuse</p>
-        <h2 class="font-[Cinzel] text-xl font-bold text-white">Dark Summoning</h2>
+        <h2 class="text-xl font-bold text-white">Dark Summoning</h2>
         <p class="mb-3 text-sm font-medium text-violet-200">Invocation obscure</p>
         <p class="text-sm leading-6 text-slate-300">Un booster thématique consacré aux monstres, aux serviteurs des Ténèbres et aux sorts interdits.</p>
-        <div class="mt-4 rounded-lg border border-white/10 bg-white/5 p-3 text-sm"><p class="font-semibold text-slate-200">4 cartes</p><p class="mt-1 text-slate-400">Monstres, serviteurs et sorts interdits</p></div>
+        <div class="mt-4 rounded-lg border border-white/10 bg-white/5 p-3 text-sm">
+          <p class="font-semibold text-slate-200">4 cartes</p>
+          <p class="mt-1 text-slate-400">Monstres, serviteurs et sorts interdits</p>
+        </div>
         <div class="mt-auto pt-5">
           <p class="mb-4 text-2xl font-bold text-violet-300">7,99 €</p>
           <label for="quantity-obscur" class="mb-2 block text-sm text-slate-300">Quantité</label>
-          <input id="quantity-obscur" data-quantity type="number" min="1" max="99" value="1" inputmode="numeric" class="mb-4 w-full rounded-lg border border-violet-300/20 bg-slate-950 px-3 py-2.5 text-white outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-400/20">
-          <button type="button" data-add-to-cart class="w-full rounded-lg bg-violet-400 px-5 py-3 text-sm font-bold text-slate-950 shadow-lg shadow-violet-950/30 transition hover:bg-violet-300 focus:outline-none focus:ring-2 focus:ring-violet-200">Ajouter au panier</button>
+          <input id="quantity-obscur" type="number" value="1" class="mb-4 w-full rounded-lg border border-violet-300/20 bg-slate-900 px-3 py-2.5 text-white outline-none">
+          <button type="button" class="w-full rounded-lg bg-violet-400 px-5 py-3 text-sm font-bold text-slate-950 hover:bg-violet-300">Ajouter au panier</button>
         </div>
       </article>
 
-      <article data-product-id="chance" data-product-name="Lucky Pack — Pack de la chance" data-price="6.99" class="group flex flex-col overflow-hidden rounded-2xl border border-emerald-400/30 bg-slate-950/90 p-5 shadow-xl shadow-black/30 transition hover:-translate-y-1 hover:border-emerald-300/70">
-        <div class="mb-5 flex h-48 items-center justify-center rounded-xl border border-emerald-300/20 bg-gradient-to-br from-emerald-950/60 to-slate-950 p-3">
-          <img src="./assets/images/booster-chance.svg" alt="Illustration du Lucky Pack, Pack de la chance" class="h-full w-full object-contain transition group-hover:scale-105">
+      <article class="flex flex-col overflow-hidden rounded-2xl border border-emerald-400/30 bg-slate-950 p-5">
+        <div class="mb-5 flex h-48 items-center justify-center rounded-lg border border-emerald-300/20 bg-slate-900 ">
+          <img src="./assets/images/booster-chance.svg" alt="Pack de la chance" class="h-full  object-contain">
         </div>
         <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-emerald-300">Pack mystère</p>
-        <h2 class="font-[Cinzel] text-xl font-bold text-white">Lucky Pack</h2>
+        <h2 class="text-xl font-bold text-white">Lucky Pack</h2>
         <p class="mb-3 text-sm font-medium text-emerald-200">Pack de la chance</p>
         <p class="text-sm leading-6 text-slate-300">Une composition aléatoire avec une chance de découvrir une carte exceptionnelle.</p>
-        <div class="mt-4 rounded-lg border border-white/10 bg-white/5 p-3 text-sm"><p class="font-semibold text-slate-200">3 cartes</p><p class="mt-1 text-slate-400">Composition aléatoire, toutes catégories possibles</p></div>
+        <div class="mt-4 rounded-lg border border-white/10 bg-white/5 p-3 text-sm">
+          <p class="font-semibold text-slate-200">3 cartes</p>
+          <p class="mt-1 text-slate-400">Composition aléatoire, toutes catégories possibles</p>
+        </div>
         <div class="mt-auto pt-5">
           <p class="mb-4 text-2xl font-bold text-emerald-300">6,99 €</p>
           <label for="quantity-chance" class="mb-2 block text-sm text-slate-300">Quantité</label>
-          <input id="quantity-chance" data-quantity type="number" min="1" max="99" value="1" inputmode="numeric" class="mb-4 w-full rounded-lg border border-emerald-300/20 bg-slate-950 px-3 py-2.5 text-white outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20">
-          <button type="button" data-add-to-cart class="w-full rounded-lg bg-emerald-400 px-5 py-3 text-sm font-bold text-slate-950 shadow-lg shadow-emerald-950/30 transition hover:bg-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-200">Ajouter au panier</button>
+          <input id="quantity-chance" type="number" value="1" class="mb-4 w-full rounded-lg border border-emerald-300/20 bg-slate-900 px-3 py-2.5 text-white outline-none">
+          <button type="button" class="w-full rounded-lg bg-emerald-400 px-5 py-3 text-sm font-bold text-slate-950 hover:bg-emerald-300">Ajouter au panier</button>
         </div>
       </article>
-    </div>
-  </section>
 
-  <section id="panier" aria-labelledby="cart-title" class="mx-auto w-full max-w-7xl scroll-mt-8 px-6 pb-20 pt-8">
-    <div class="mx-auto max-w-4xl overflow-hidden rounded-2xl border border-amber-300/25 bg-slate-950/95 shadow-2xl shadow-black/40">
-      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 px-6 py-6 sm:px-8">
-        <div><p class="text-xs font-semibold uppercase tracking-[0.2em] text-amber-400">Votre sélection</p><h2 id="cart-title" class="mt-2 font-[Cinzel] text-3xl font-bold text-white">Mon panier <span id="cart-count" class="ml-2 text-base font-medium text-slate-400">(0 article)</span></h2></div>
-        <button id="clear-cart" type="button" disabled class="rounded-lg border border-slate-600 px-4 py-2 text-sm font-semibold text-slate-300 transition hover:border-amber-400 hover:text-amber-200 disabled:cursor-not-allowed disabled:opacity-40">Vider le panier</button>
-      </div>
-      <div class="px-6 py-6 sm:px-8">
-        <p id="cart-empty" class="py-8 text-center text-slate-400">Votre panier est vide. Choisissez un booster pour commencer votre collection.</p>
-        <ul id="cart-items" aria-live="polite" class="divide-y divide-white/10"></ul>
-        <div class="mt-4 flex flex-col gap-5 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <div><p class="text-sm text-slate-400">Total de la commande</p><p id="cart-total" class="mt-1 text-3xl font-bold text-amber-300">0,00 €</p></div>
-          <button id="checkout" type="button" disabled class="rounded-lg bg-amber-500 px-6 py-3 text-sm font-bold text-slate-950 shadow-lg shadow-amber-950/30 transition hover:bg-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-200 disabled:cursor-not-allowed disabled:opacity-40">Simuler la commande</button>
-        </div>
-        <p class="mt-4 text-xs leading-5 text-slate-500">Commande de démonstration : aucun paiement ni aucune donnée bancaire ne sont demandés.</p>
-        <p id="cart-notice" role="status" aria-live="polite" class="mt-4 hidden rounded-lg border border-emerald-400/30 bg-emerald-950/50 p-4 text-sm text-emerald-200"></p>
-      </div>
     </div>
   </section>
 </main>
