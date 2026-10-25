@@ -26,17 +26,16 @@
 
 <main class="relative">
   <button id="cart-icon-btn" type="button"
-  class="fixed top-[50%] right-[30px] z-50 flex items-center gap-2 rounded-full border border-amber-300/40 bg-slate-950/90 px-4 py-3 text-amber-300 ">
+  class="fixed top-[25%] right-[30px] z-500 flex items-center gap-2 rounded-full border border-amber-300/40 bg-slate-950/90 px-4 py-3 text-amber-300 ">
   🛒
-  <span id="cart-badge" class="font-bold">0</span>
+  <span id="cart-contour" class="font-bold">0</span>
 </button>
 
-<div id="cart-modal"
-  class="fixed top-[30%] right-[50px] z-50 hidden w-full max-w-lg rounded-2xl border border-amber-300/30 bg-slate-950 p-6 ">
+<div id="panier"  class="fixed hidden  top-[30%] right-[50px] z-50  w-full max-w-lg rounded-2xl border border-amber-300/30 bg-slate-950 p-6 ">
 
   <div class="flex items-center justify-between border-b border-white/10 pb-4">
     <h2 class="text-2xl font-bold text-white">Vos commandes</h2>
-    <button id="close-cart" type="button" class="text-slate-400 hover:text-white text-xl font-bold">✕</button>
+    <button id="close-panier" type="button" class="text-slate-400 hover:text-white text-xl font-bold">✕</button>
   </div>
 
   <ul id="liste-panier" class="my-4 text-slate-300">
