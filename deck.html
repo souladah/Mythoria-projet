@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mythoria</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="./js/shop.js" defer></script>
+</head>
+<body class="min-h-screen bg-[url('./assets/images/Château-gothique.png')] bg-fixed bg-cover bg-no-repeat selection:bg-amber-300/30">
+  <header class="sticky top-0 border-b border-amber-300/20 z-50 bg-slate-950">
+    <nav class="flex w-auto h-auto min-h-[70px] px-10 flex-wrap justify-between items-center">
+      <a href="./index.html" class="mt-[10px]">
+        <img src="./assets/images/logo.png" alt="" class="w-[100px] h-auto">
+      </a>
+
+      <div class="flex flex-wrap items-center justify-center gap-4 text-xs uppercase tracking-[1px] text-slate-200">
+        <a class="py-2 transition hover:text-amber-300" href="./index.html" aria-current="page">Accueil</a>
+        <a class="py-2 transition hover:text-amber-300" href="./shop.html">Boutique</a>
+        <a class="py-2 border-b border-amber-300 text-amber-300 transition hover:text-amber-100 " href="./opening.html">Ouverture</a>
+        <a class="py-2 transition hover:text-amber-300" href="./grimoire.html">Grimoire</a>
+        <a class="py-2 transition hover:text-amber-300" href="./deck.html">Mon deck</a>
+      </div>
+    </nav>
+  </header>
+
+
+
+  <footer class="border-t border-amber-400/20 bg-slate-950/90">
+    <div class="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-10 sm:flex-row sm:items-center sm:justify-between">
+      <div class="flex items-center gap-4">
+        <a href="./index.html" aria-label="Mythoria, accueil">
+          <img src="./assets/images/logo.png" alt="Mythoria" class="w-24">
+        </a>
+        <p class="max-w-xs text-sm leading-6 text-slate-400">Un univers de cartes à collectionner, de magie et de légendes.</p>
+      </div>
+      <nav aria-label="Liens de pied de page" class="flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-300">
+        <a class="py-2 hover:text-amber-300" href="./index.html" aria-current="page">Accueil</a>
+        <a class="py-2 hover:text-amber-300" href="./shop.html">Boutique</a>
+        <a class="border-b-2 border-amber-400 py-2 text-amber-300 " href="./opening.html">Ouverture</a>
+        <a class="py-2 hover:text-amber-300" href="./grimoire.html">Grimoire</a>
+        <a class="py-2 hover:text-amber-300" href="./deck.html">Mon deck</a>
+      </nav>
+    </div>
+    <div class="border-t border-white/10 px-6 py-4 text-center text-xs text-slate-500">
+      © Mythoria — Tous droits réservés.
+    </div>
+  </footer>
+</body>
+</html>
