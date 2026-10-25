@@ -1,4 +1,3 @@
-const boosters = document.getElementById("boosters");
 const panier = document.getElementById("panier");
 const total = document.getElementById("total-prix");
 const contour = document.getElementById("cart-contour");
@@ -56,21 +55,30 @@ closBtn.addEventListener("click",()=>{
 
 })
 
+
 function afficherPanier() {
     let totalCalcul = 0;
     let quantiteTotale = 0;
 
     for (let i = 0; i < panierProduits.length; i++) {
-        totalCalcul += panierProduits[i].prix * panierProduits[i].quantite;
+        totalCalcul += panierProduits[i].prix * panierProduits[i].quantite.toFixed(2);
         quantiteTotale += panierProduits[i].quantite;
     }
 
-    total.textContent = totalCalcul.toFixed(2) + " €";
+    total.textContent = totalCalcul + " €";
     contour.textContent = quantiteTotale;
 
     listComande.innerHTML = "";
 
-    mesg.classList.add("none") ;
+    if (panierProduits.length === 0) {
+        mesg.textContent = "Votre panier est vide";
+        mesg.style.display = "list-item";
+        listComande.appendChild(mesg);
+        return;
+    }else{
+       mesg.classList.add = "none";
+    }
+
 
     for (let i = 0; i < panierProduits.length; i++) {
         const newProduit = document.createElement("li");
@@ -80,6 +88,30 @@ function afficherPanier() {
             panierProduits[i].prix + " € × " +
             panierProduits[i].quantite + " = " +
             (panierProduits[i].prix * panierProduits[i].quantite) + " € ";
+       
+            const addBtn = document.createElement("button");
+            addBtn.textContent = "+";
+            addBtn.type = "button";
+
+            addBtn.addEventListener("click", () => {
+                panierProduits[i].quantite++;
+                afficherPanier();
+            });
+
+            const diminuerBtn = document.createElement("button");
+            diminuerBtn.textContent = "-";
+            diminuerBtn.type = "button";
+
+            diminuerBtn.addEventListener("click", () => {
+                if (panierProduits[i].quantite > 1) {
+                    panierProduits[i].quantite--;
+                } else {
+                    panierProduits.splice(i, 1);
+                }
+
+                afficherPanier();
+            });
+
 
         const removeBTn = document.createElement("button");
         removeBTn.textContent = "Supprimer";
@@ -90,8 +122,35 @@ function afficherPanier() {
             afficherPanier();
         });
 
+        newProduit.appendChild(diminuerBtn);
+        newProduit.appendChild(addBtn);
         newProduit.appendChild(removeBTn);
         listComande.appendChild(newProduit);
     }
 }
+
+
+function vider() {
+    panierProduits.length = 0;
+    afficherPanier();
+}
+
+viderBtn.addEventListener("click", () => {
+    vider();
+});
+
+
+comanderBtn.addEventListener("click", () => {
+    if (panierProduits.length === 0) {
+        alert("Votre panier est vide.");
+        return;
+    }else{
+    alert("Votre commande est de " + total.textContent);
+    vider();
+    }
+
+    
+});
+
+
 
