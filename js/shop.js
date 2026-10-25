@@ -20,12 +20,7 @@ for (let i = 0; i < ajoutBtn.length; i++) {
         const nom = ajoutBtn[i].dataset.name;
         const prix = Number(ajoutBtn[i].dataset.price);
 
-        const inputQuantite = document.getElementById(
-            ajoutBtn[i].dataset.quantityInput
-        );
-
-        const quantite = Number(inputQuantite.value);
-
+        const quantite = Number(ajoutBtn[i].previousElementSibling.value);
         if (quantite <= 0) {
             alert("Veuillez choisir une quantité valide.");
             return;
@@ -37,7 +32,7 @@ for (let i = 0; i < ajoutBtn.length; i++) {
 
         if (produitExistant) {
 
-            produitExistant.quantite = produitExistant.quantite+quantite;
+            produitExistant.quantite = produitExistant.quantite + quantite ;
 
         } else {
 
@@ -50,5 +45,53 @@ for (let i = 0; i < ajoutBtn.length; i++) {
 
         afficherPanier();
     });
+}
+
+openPanier.addEventListener("click",()=>{
+    panier.classList.remove("hidden") ;
+})
+
+closBtn.addEventListener("click",()=>{
+      panier.classList.add("hidden") ;
+
+})
+
+function afficherPanier() {
+    let totalCalcul = 0;
+    let quantiteTotale = 0;
+
+    for (let i = 0; i < panierProduits.length; i++) {
+        totalCalcul += panierProduits[i].prix * panierProduits[i].quantite;
+        quantiteTotale += panierProduits[i].quantite;
+    }
+
+    total.textContent = totalCalcul.toFixed(2) + " €";
+    contour.textContent = quantiteTotale;
+
+    listComande.innerHTML = "";
+
+    mesg.classList.add("none") ;
+
+    for (let i = 0; i < panierProduits.length; i++) {
+        const newProduit = document.createElement("li");
+
+        newProduit.textContent =
+            panierProduits[i].nom + " " +
+            panierProduits[i].prix + " € × " +
+            panierProduits[i].quantite + " = " +
+            (panierProduits[i].prix * panierProduits[i].quantite) + " € ";
+
+        const removeBTn = document.createElement("button");
+        removeBTn.textContent = "Supprimer";
+        removeBTn.type = "button";
+
+        removeBTn.addEventListener("click", () => {
+            panierProduits.splice(i, 1);
+            afficherPanier();
+        });
+
+        newProduit.appendChild(removeBTn);
+        listComande.appendChild(newProduit);
+    }
 }
 
