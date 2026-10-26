@@ -157,7 +157,7 @@ comanderBtn.addEventListener("click", () => {
         for (let i = 0; i < produit.quantite; i++) {
             inventaire.push({
                 id: Date.now() + Math.random(),
-                type: produit.nom
+                type: produit.nom ,
             });
         }
     });
