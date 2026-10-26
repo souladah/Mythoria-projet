@@ -23,7 +23,112 @@
       </div>
     </nav>
   </header>
+<main class="mx-auto  max-w-7xl px-5 py-12 sm:px-10">
+    <section class="mb-12 text-center">
+      <p class="mb-4 text-sm font-semibold uppercase tracking-[0.35em] text-amber-300">
+        Le rituel commence
+      </p>
+      <h1 class="text-3xl font-bold uppercase tracking-wider text-amber-200 sm:text-5xl">
+        Opening Chamber
+      </h1>
+      <p class="mx-auto mt-5 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
+        Entre dans la chambre mystique, ouvre tes boosters et découvre
+        les cartes qui rejoindront ton grimoire.
+      </p>
+      <div class="mx-auto mt-6 h-px w-32 bg-gradient-to-r from-transparent via-amber-300 to-transparent"></div>
+    </section>
+    <section class="grid grid-cols-1  items-start gap-8 sm:grid-cols-[1fr_1fr]">
+      <section class="rounded-2xl border border-amber-300/20 bg-slate-950/90 p-6 ">
+        <h2 class="text-xl font-bold text-amber-200">
+          Tes boosters
+        </h2>
+        <p class="mt-2 text-sm leading-6 text-slate-400">
+          Sélectionne un booster disponible pour commencer le rituel.
+        </p>
+        <div id="booster-list" class="mt-6 space-y-4">
+          <p id="no-boosters" class="rounded-lg border border-white/10 bg-white/5 p-4 text-sm leading-6 text-slate-400">
+            Chargement de tes boosters disponibles...
+          </p>
+        </div>
+        <p id="booster-message"
+           class="mt-5 text-sm leading-6 text-amber-200"
+           role="status"
+           aria-live="polite">
+        </p>
+      </section>
+      <section class="rounded-2xl border border-amber-300/20 bg-slate-950/85 p-5 shadow-2xl sm:p-8">
+        <div class="text-center">
+          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-purple-300">
+            Chambre mystique
+          </p>
+          <h2 class="mt-3 text-2xl font-bold text-white sm:text-3xl">
+            Réveille la magie
+          </h2>
+          <p class="mx-auto mt-3 max-w-xl text-sm leading-6 text-slate-400">
+            Chaque booster contient cinq cartes sélectionnées aléatoirement
+            selon les probabilités définies pour son type.
+          </p>
+        </div>
+        <div class="my-10 flex justify-center">
+          <div id="booster-visual"
+               class="flex min-h-[300px] w-full max-w-[230px] flex-col items-center justify-center rounded-2xl border border-amber-300/40 bg-gradient-to-br from-purple-950 via-slate-900 to-black p-6 text-center shadow-[0_0_45px_rgba(168,85,247,0.20)] transition duration-500">
+            <div class="flex h-20 w-20 items-center justify-center rounded-full border border-amber-300/40 bg-purple-500/10 text-5xl text-amber-200">
+              ✦
+            </div>
+            <p class="mt-6 text-xl font-bold tracking-[0.2em] text-amber-200">
+              MYTHORIA
+            </p>
+            <p id="selected-booster-name" class="mt-4 text-sm text-purple-200">
+              Aucun booster sélectionné
+            </p>
+            <p class="mt-3 text-xs uppercase tracking-widest text-slate-500">
+              Scellé magique
+            </p>
+          </div>
+        </div>
+        <div class="text-center">
+          <button id="open-booster-btn"
+                  type="button"
+                  class="rounded-xl bg-gradient-to-r from-purple-700 to-purple-600 px-8 py-4 font-bold text-white ">
+            ✨ Ouvrir le booster
+          </button>
+          <p id="opening-status"
+             class="mt-4 text-sm leading-6 text-slate-400">
+            Sélectionne un booster pour commencer.
+          </p>
 
+        </div>
+        <section id="reveal-section"
+                 class="mt-12 hidden">
+          <div class="mb-8 text-center">
+            <p class="text-xs uppercase tracking-[0.3em] text-purple-300">
+              Le destin a parlé
+            </p>
+            <h2 id="reveal-title" class="mt-3 text-2xl font-bold text-amber-200 sm:text-3xl">
+              Tes cartes découvertes
+            </h2>
+            <p id="rare-message"
+               class="mt-4 text-sm font-semibold text-amber-300">
+            </p>
+          </div>
+          <div id="revealed-cards"
+               class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
+          </div>
+          <div class="mt-10 flex flex-wrap justify-center gap-4">
+            <button id="open-another-btn"
+                    type="button"
+                    class="rounded-xl border border-purple-400/40 px-6 py-3 text-sm font-semibold text-purple-200 transition hover:bg-purple-500/10">
+              Ouvrir un autre booster
+            </button>
+            <a href="./grimoire.html"
+               class="rounded-xl border border-amber-300/40 px-6 py-3 text-sm font-semibold text-amber-200 transition hover:bg-amber-300/10">
+              Consulter mon Grimoire →
+            </a>
+          </div>
+        </section>
+      </section>
+    </section>
+</main>
   <footer class="border-t border-amber-400/20 bg-slate-950/90">
     <div class="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-10 sm:flex-row sm:items-center sm:justify-between">
       <div class="flex items-center gap-4">
