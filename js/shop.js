@@ -149,7 +149,30 @@ comanderBtn.addEventListener("click", () => {
         return;
     }
 
-    alert("Votre commande est de " + total.textContent);
+    let inventaire = JSON.parse(
+        localStorage.getItem("mythoriaBoosters")
+    ) || [];
+
+    panierProduits.forEach(produit => {
+        for (let i = 0; i < produit.quantite; i++) {
+            inventaire.push({
+                id: Date.now() + Math.random(),
+                type: produit.nom
+            });
+        }
+    });
+
+    localStorage.setItem(
+        "mythoriaBoosters",
+        JSON.stringify(inventaire)
+    );
+
+    alert(
+        "Commande validée ! Total : " +
+        total.textContent +
+        "\nTes boosters sont disponibles dans Ouverture."
+    );
+
     vider();
 });
 
