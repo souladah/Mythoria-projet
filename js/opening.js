@@ -121,11 +121,8 @@ function tirerCarte(config,dejaTirees){
     const rarete=tirerRarete(config.probas);
     let pool=cartes.filter(c=>c.rarete===rarete && config.familles.includes(c.type) && !dejaTirees.includes(c));
     if(pool.length===0){
-        pool=cartes.filter(c=>c.rarete===rarete);
-    }
-    if(pool.length===0){
-        pool=cartes.filter(c=>!dejaTirees.includes(c));
-    }
+      pool=cartes.filter(c=>config.familles.includes(c.type) && !dejaTirees.includes(c));    }
+    
     return pool[Math.floor(Math.random()*pool.length)];
 }
  
