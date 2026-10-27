@@ -10,6 +10,30 @@ boosterList.innerHTML = "";
 const selectedNmae=document.getElementById("selected-booster-name");
 const LaSection=document.getElementById("section");
 
+const imagesBoosters={
+    "Beginner Pack":"./assets/images/boosters/pack-debutant.png",
+    "Summoning of the Legends":"./assets/images/boosters/pack-legendes.png",
+    "Dark Summoning":"./assets/images/boosters/booster-obscur.png",
+    "Lucky Pack":"./assets/images/boosters/booster-chance.png"
+};
+
+const boosterVisual=document.getElementById("booster-visual");
+const rondEtoile=boosterVisual.querySelector("div");
+const imgBooster=document.createElement("img");
+imgBooster.classList.add("hidden","h-40","object-contain","rounded-lg");
+boosterVisual.prepend(imgBooster);
+function afficherImageBooster(type){
+    if(type && imagesBoosters[type]){
+        imgBooster.src=imagesBoosters[type];
+        imagesBoosters.alt=type;
+        imgBooster.classList.remove("hidden");
+        rondEtoile.classList.add("hidden");
+    }else{
+        imgBooster.classList.add("hidden");
+        rondEtoile.classList.remove("hidden");
+    }
+}
+
 const toutLesLI=boosterList.querySelectorAll("li");
 
 const cartes = [
@@ -63,6 +87,7 @@ if (boosters.length === 0) {
                 LiSelectionne=li; 
                 boosterSelectionne=type;                 
                 selectedNmae.textContent=type;
+                afficherImageBooster(type);
                 const toustesLI=ul.querySelectorAll("li");
                 for(let j=0;j<toustesLI.length;j++){
                     toustesLI[j].classList.remove("ring-4","ring-purple-500");
@@ -147,6 +172,7 @@ openBtn.addEventListener("click",()=>{
     LiSelectionne.remove();
     boosterSelectionne=null ;
     selectedNmae.textContent="aucun booster selectionne";
+    afficherImageBooster(null);
 
    }else{
     LiSelectionne.textContent=boosterSelectionne+"*"+restant;
