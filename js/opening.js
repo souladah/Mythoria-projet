@@ -117,11 +117,14 @@ function tirerRarete(probas){
     return "Commune";
 }
 
-function tirerCarte(config){
+function tirerCarte(config,dejaTirees){
     const rarete=tirerRarete(config.probas);
-    let pool=cartes.filter(c=>c.rarete===rarete && config.familles.includes(c.type));
+    let pool=cartes.filter(c=>c.rarete===rarete && config.familles.includes(c.type) && !dejaTirees.includes(c));
     if(pool.length===0){
         pool=cartes.filter(c=>c.rarete===rarete);
+    }
+    if(pool.length===0){
+        pool=cartes.filter(c=>!dejaTirees.includes(c));
     }
     return pool[Math.floor(Math.random()*pool.length)];
 }
@@ -156,10 +159,13 @@ openBtn.addEventListener("click",()=>{
    const UnDiv=document.createElement("div");
    const uneUl=document.createElement("ul");
    uneUl.classList.add("flex","flex-wrap","justify-center");
+   
+   const tirage=[];
 
    for(let i=0; i<config.nbCartes;i++){
     const Uneli=document.createElement("li");
-    const carte=tirerCarte(config);
+    const carte=tirerCarte(config,tirage);
+    tirage.push(carte);
 
     collection.push(carte);
     const img=document.createElement("img");
