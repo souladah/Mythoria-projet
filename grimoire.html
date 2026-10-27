@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mythoria</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <script src="./js/shop.js" defer></script>
+  <script src="./js/grimoire.js" defer></script>
 </head>
 <body class="min-h-screen bg-[url('./assets/images/Château-gothique.png')] bg-fixed bg-cover bg-no-repeat selection:bg-amber-300/30">
   <header class="sticky top-0 border-b border-amber-300/20 z-50 bg-slate-950">
@@ -24,7 +24,40 @@
     </nav>
   </header>
 
+<main class="max-auto max-w-5xl px-5 py-10">
+  <h1 class="mb-6 text-center text-3xl font-bold text-amber">Mon Grimoire</h1>
+<section class="mb-6 flex flex-wrap justify-center gap-4 text-white">
+      <select id="filtre-type" class="rounded bg-slate-900 p-2">
+      <option value="all"> Tous les types</option>
+      <option value="Heros"> Serviteurs de la lumiere</option>
+      <option value="Monstre"> Serviteurs de la tenebres</option>
+      <option value="Serviteur"> Minions</option>
+      <option value="Sort"> Spells</option> 
+      </select>
+      
+      <select id="filtre-rarete" class="rounded bg-slate-900 p-2" >
+      <option value="all"> Tous les raretés</option>
+      <option value="Commmune">Commune</option>
+      <option value="Rare">  Rare</option>
+      <option value="Épique"> Épique</option>
+      <option value="Légendaire"> Légendaire</option>
+      </select>
+</section>
 
+   <p id="grimoie-vide" class="hidden text-center text-slate-300"> 
+        Ton grimoire est vide. Ouvre des boosters pour découvrir des cartes.
+   </p>
+   <section id="livre" class="rounded-xl border border-ambre-300/30 bg-slate-950/90 p-6">
+     <div id="pages" class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+
+     </div>
+     
+   </section>
+   <section id ="detail-carte" class="mt-6 hidden rounded-xl border border-amber-300/30 bg-slate-950/90 p-6 text-white">
+    <button id="fermer-detail" type="button" class="mb-4 rounded bg-slate-800 px-3 py-1">fermer </button>
+    <div id="detail-contenu"></div>
+   </section>
+</main>
 
   <footer class="border-t border-amber-400/20 bg-slate-950/90">
     <div class="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-10 sm:flex-row sm:items-center sm:justify-between">
