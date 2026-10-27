@@ -7,7 +7,7 @@ const comanderBtn = document.getElementById("btn-commander");
 const listComande = document.getElementById("liste-panier");
 const closBtn = document.getElementById("close-panier");
 const openPanier = document.getElementById("cart-icon-btn");
-const ajoutBtn = document.querySelectorAll(".btn-add-cart");
+const ajoutBtn = document.querySelectorAll(".btn-add-cart");// pour selectionner tout les btn dajout de boosters au pnier
 
 let panierProduits = JSON.parse(
     localStorage.getItem("panierMythoria")
@@ -16,7 +16,7 @@ let panierProduits = JSON.parse(
 for (let i = 0; i < ajoutBtn.length; i++) {
     ajoutBtn[i].addEventListener("click", () => {
         const nom = ajoutBtn[i].dataset.name;
-        const prix = Number(ajoutBtn[i].dataset.price);
+        const prix = Number(ajoutBtn[i].dataset.price);//dataset.price in html atribute data-Pric
         const quantite = Number(ajoutBtn[i].previousElementSibling.value);
 
         if (!Number.isInteger(quantite) || quantite <= 0) {

@@ -16,16 +16,26 @@ for (let i=0;i<collection.length ;i++){
         cartesUniques.push(carte);
         
     }
-    
+     
 }
 
 const collectionCartes=document.getElementById("collection-cartes");
+
+const fitreType=document.getElementById("filtre-type");
+const filtreRarete=document.getElementById("filtre-rarete");
+
 function afficherCartes(){
     collectionCartes.innerHTML="";
+
+
+    const typeChoisie=fitreType.value;
+    const rareteChoisie=filtreRarete.value;
+
     for(let i=0;i<cartesUniques.length;i++){
         const carte=cartesUniques[i];
-        
-        const div=document.createElement("div");
+        if((typeChoisie==="all" || carte.type===typeChoisie) &&
+        (rareteChoisie ==="all" || carte.rarete=== rareteChoisie)){
+              const div=document.createElement("div");
         div.classList.add(
         "rounded-lg", 
         "border-2",                                       
@@ -51,8 +61,8 @@ function afficherCartes(){
                 div.appendChild(nom);
                 collectionCartes.appendChild(div);
     }
-      
-
-    
+        }
 }
+filtreRarete.addEventListener("change",afficherCartes);
+fitreType.addEventListener("change",afficherCartes);
 afficherCartes();

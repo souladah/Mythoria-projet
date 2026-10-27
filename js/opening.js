@@ -18,7 +18,6 @@ const imagesBoosters={
 };
 
 const boosterVisual=document.getElementById("booster-visual");
-const rondEtoile=boosterVisual.querySelector("div");
 const imgBooster=document.createElement("img");
 imgBooster.classList.add("hidden","h-40","object-contain","rounded-lg");
 boosterVisual.prepend(imgBooster);
@@ -27,10 +26,8 @@ function afficherImageBooster(type){
         imgBooster.src=imagesBoosters[type];
         imagesBoosters.alt=type;
         imgBooster.classList.remove("hidden");
-        rondEtoile.classList.add("hidden");
     }else{
         imgBooster.classList.add("hidden");
-        rondEtoile.classList.remove("hidden");
     }
 }
 
@@ -55,7 +52,8 @@ const cartes = [
     { nom: "Portail", image: "portail.png", rarete: "Épique", type: "Sort", attaque: 0, defense: 8 }
 ];
 const openBtn=document.getElementById("open-booster-btn");
-
+let boosterSelectionne=null;
+let LiSelectionne=null;
 const Lasection=document.getElementById("section");
 if (boosters.length === 0) { 
     boosterList.textContent = "Tu n'as aucun booster.";
@@ -152,8 +150,7 @@ function tirerCarte(config,dejaTirees){
 }
  
 const statusText=document.getElementById("opening-status");
-let boosterSelectionne=null;
-let LiSelectionne=null;
+
 openBtn.addEventListener("click",()=>{
     if(!boosterSelectionne){
         statusText.textContent="slectionne d abord un booster";

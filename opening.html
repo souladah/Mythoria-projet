@@ -35,7 +35,7 @@
         Entre dans la chambre mystique, ouvre tes boosters et découvre
         les cartes qui rejoindront ton grimoire.
       </p>
-      <div class="mx-auto mt-6 h-px w-32 bg-gradient-to-r from-transparent via-amber-300 to-transparent"></div>
+      <div class="mx-auto mt-6 h-px w-32"></div>
     </section>
     <section class="grid grid-cols-1  items-start gap-8 sm:grid-cols-[1fr_1fr]">
       <section class="rounded-2xl border border-amber-300/20 bg-slate-950/90 p-6 ">
@@ -46,9 +46,7 @@
           Sélectionne un booster disponible pour commencer le rituel.
         </p>
         <div id="booster-list" class="mt-6 space-y-4">
-          <p id="no-boosters" class="rounded-lg border border-white/10 bg-white/5 p-4 text-sm leading-6 text-slate-400">
-            Chargement de tes boosters disponibles...
-          </p>
+          
         </div>
         <p id="booster-message"
            class="mt-5 text-sm leading-6 text-amber-200"
@@ -71,10 +69,8 @@
         </div>
         <div class="my-10 flex justify-center">
           <div id="booster-visual"
-               class="flex min-h-[300px] w-full max-w-[230px] flex-col items-center justify-center rounded-2xl border border-amber-300/40 bg-gradient-to-br from-purple-950 via-slate-900 to-black p-6 text-center shadow-[0_0_45px_rgba(168,85,247,0.20)] transition duration-500">
-            <div class="flex h-20 w-20 items-center justify-center rounded-full border border-amber-300/40 bg-purple-500/10 text-5xl text-amber-200">
-              
-            </div>
+               class="flex min-h-[300px] w-full max-w-[230px] flex-col items-center justify-center rounded-2xl border border-amber-300/40 ">
+            
             <p class="mt-6 text-xl font-bold tracking-[0.2em] text-amber-200">
               MYTHORIA 
             </p>
@@ -89,7 +85,7 @@
         <div class="text-center">
           <button id="open-booster-btn"
                   type="button"
-                  class="rounded-xl bg-gradient-to-r from-purple-700 to-purple-600 px-8 py-4 font-bold text-white ">
+                  class="rounded-xl  px-8 py-4 font-bold text-white ">
             ✨ Ouvrir le booster
           </button>
           <p id="opening-status"

@@ -24,16 +24,16 @@
     </nav>
   </header>
 
-<main class="max-auto max-w-5xl px-5 py-10">
-  <h1 class="mb-6 text-center text-3xl font-bold text-amber">Mon Grimoire</h1>
+<main class="mx-auto max-w-5xl px-5 py-10">
+  <h1 class="mb-6 text-center text-3xl font-bold text-amber-200">Mon Grimoire</h1>
 <section class="mb-6 flex flex-wrap justify-center gap-4 text-white">
-      <select id="filtre-type" class="rounded bg-slate-900 p-2">
-      <option value="all"> Tous les types</option>
-      <option value="Heros"> Serviteurs de la lumiere</option>
-      <option value="Monstre"> Serviteurs de la tenebres</option>
-      <option value="Serviteur"> Minions</option>
-      <option value="Sort"> Spells</option> 
-      </select>
+    <select id="filtre-type" class="rounded bg-slate-900 p-2">
+    <option value="all">Tous les types</option>
+    <option value="Héros">Serviteurs de la lumière</option>
+    <option value="Monstre">Serviteurs des ténèbres</option>
+    <option value="Serviteur">Minions</option>
+    <option value="Sort">Sorts</option>
+    </select>
       
       <select id="filtre-rarete" class="rounded bg-slate-900 p-2" >
       <option value="all"> Tous les raretés</option>
@@ -47,15 +47,11 @@
    <p id="grimoire-vide" class="hidden text-center text-slate-300"> 
         Ton grimoire est vide. Ouvre des boosters pour découvrir des cartes.
    </p>
-   <section id="livre" class="rounded-xl border border-ambre-300/30 bg-slate-950/90 p-6">
+   <section id="livre" class="rounded-xl border border-amber-300/30 bg-slate-950/90 p-6">
      <div id="collection-cartes" class="grid grid-cols-1 gap-4 sm:grid-cols-2">
 
      </div>
      
-   </section>
-   <section id ="detail-carte" class="mt-6 hidden rounded-xl border border-amber-300/30 bg-slate-950/90 p-6 text-white">
-    <button id="fermer-detail" type="button" class="mb-4 rounded bg-slate-800 px-3 py-1">fermer </button>
-    <div id="detail-contenu"></div>
    </section>
 </main>
 
