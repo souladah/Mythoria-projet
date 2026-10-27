@@ -13,22 +13,22 @@ const LaSection=document.getElementById("section");
 const toutLesLI=boosterList.querySelectorAll("li");
 
 const cartes = [
-    { nom: "Apprenti", image: "apprenti.png", rarete: "Commune" },
-    { nom: "Aria", image: "aria.png", rarete: "Commune" },
-    { nom: "Loup spectral", image: "loup-spectral.png", rarete: "Rare" },
-    { nom: "Mage de cristal", image: "mage-cristal.png", rarete: "Rare" },
-    { nom: "Chevalier de l'aube", image: "chevalier-aube.png", rarete: "Épique" },
-    { nom: "Dragon des abysses", image: "dragon-abysses.png", rarete: "Légendaire" },
-    { nom: "Phoenix", image: "phoenix.png", rarete: "Épique" },
-    { nom: "Roi des ombres", image: "roi-ombres.png", rarete: "Légendaire" },
-    { nom: "Ange de l'éternité", image: "ange-eternite.png", rarete: "Légendaire" },
-    { nom: "Flamme du jugement", image: "flamme-jugement.png", rarete: "Épique" },
-    { nom: "Invocation suprême", image: "invocation-supreme.png", rarete: "Légendaire" },
-    { nom: "Aurelion", image: "legendaire-aurelion.webp", rarete: "Légendaire" },
-    { nom: "Éclipse", image: "legendaire-eclipse.webp", rarete: "Légendaire" },
-    { nom: "Nocthar", image: "legendaire-nocthar.webp", rarete: "Légendaire" },
-    { nom: "Ombre vorace", image: "ombre-vorace.png", rarete: "Rare" },
-    { nom: "Portail", image: "portail.png", rarete: "Épique" }
+    { nom: "Apprenti", image: "apprenti.png", rarete: "Commune", type: "Serviteur", attaque: 2, defense: 2 },
+    { nom: "Aria", image: "aria.png", rarete: "Commune", type: "Héros", attaque: 3, defense: 1 },
+    { nom: "Loup spectral", image: "loup-spectral.png", rarete: "Rare", type: "Monstre", attaque: 5, defense: 3 },
+    { nom: "Mage de cristal", image: "mage-cristal.png", rarete: "Rare", type: "Héros", attaque: 6, defense: 2 },
+    { nom: "Chevalier de l'aube", image: "chevalier-aube.png", rarete: "Épique", type: "Héros", attaque: 7, defense: 6 },
+    { nom: "Dragon des abysses", image: "dragon-abysses.png", rarete: "Légendaire", type: "Monstre", attaque: 10, defense: 8 },
+    { nom: "Phoenix", image: "phoenix.png", rarete: "Épique", type: "Monstre", attaque: 8, defense: 4 },
+    { nom: "Roi des ombres", image: "roi-ombres.png", rarete: "Légendaire", type: "Monstre", attaque: 9, defense: 9 },
+    { nom: "Ange de l'éternité", image: "ange-eternite.png", rarete: "Légendaire", type: "Héros", attaque: 8, defense: 10 },
+    { nom: "Flamme du jugement", image: "flamme-jugement.png", rarete: "Épique", type: "Sort", attaque: 9, defense: 0 },
+    { nom: "Invocation suprême", image: "invocation-supreme.png", rarete: "Légendaire", type: "Sort", attaque: 10, defense: 5 },
+    { nom: "Aurelion", image: "legendaire-aurelion.webp", rarete: "Légendaire", type: "Héros", attaque: 10, defense: 7 },
+    { nom: "Éclipse", image: "legendaire-eclipse.webp", rarete: "Légendaire", type: "Sort", attaque: 9, defense: 8 },
+    { nom: "Nocthar", image: "legendaire-nocthar.webp", rarete: "Légendaire", type: "Monstre", attaque: 10, defense: 6 },
+    { nom: "Ombre vorace", image: "ombre-vorace.png", rarete: "Rare", type: "Serviteur", attaque: 5, defense: 4 },
+    { nom: "Portail", image: "portail.png", rarete: "Épique", type: "Sort", attaque: 0, defense: 8 }
 ];
 const openBtn=document.getElementById("open-booster-btn");
 
@@ -60,6 +60,7 @@ if (boosters.length === 0) {
                 "m-5"
             );
             li.addEventListener("click",()=>{
+                LiSelectionne=li; 
                 boosterSelectionne=type;                 
                 selectedNmae.textContent=type;
                 const toustesLI=ul.querySelectorAll("li");
@@ -74,18 +75,33 @@ boosterList.appendChild(ul);
 }
 
 const typesBoosters={
-    "Beginner Pack" :{
-        nbCartes :5 ,
-        probas :{ "Commune":70 , "Rare":22,"Épique":7,"Légendaire":1}
-    },"Summoning of the Legends":{
-        nbCartes :5 ,
-        probas :{ "Commune":30,"Rare":30,"Épique":25,"Légendaire":15}
+    "Beginner Pack":{
+        nbCartes:5,
+        familles:["Héros","Monstre","Serviteur","Sort"],
+        probas:{"Commune":70,"Rare":22,"Épique":7,"Légendaire":1}
+    },
+    "Summoning of the Legends":{
+        nbCartes:5,
+        familles:["Héros","Monstre","Serviteur","Sort"],
+        probas:{"Commune":30,"Rare":30,"Épique":25,"Légendaire":15}
+    },
+    "Dark Summoning":{
+        nbCartes:5,
+        familles:["Monstre","Serviteur","Sort"],
+        probas:{"Commune":40,"Rare":30,"Épique":20,"Légendaire":10}
+    },
+    "Lucky Pack":{
+        nbCartes:5,
+        familles:["Héros","Monstre","Serviteur","Sort"],
+        probas:{"Commune":40,"Rare":25,"Épique":20,"Légendaire":15}
     }
 };
 
 const configParDefaut={
     nbCartes:5,
-    probas:{"Commune":60,"Rare":25,"Épique":10,"Légendaire":5}};
+    familles:["Héros","Monstre","Serviteur","Sort"],
+    probas:{"Commune":60,"Rare":25,"Épique":10,"Légendaire":5}
+};
 function tirerRarete(probas){
     let total=0;
     for(const r in probas){
@@ -103,21 +119,39 @@ function tirerRarete(probas){
 
 function tirerCarte(config){
     const rarete=tirerRarete(config.probas);
-    const pool=cartes.filter(c=>c.rarete===rarete);
+    let pool=cartes.filter(c=>c.rarete===rarete && config.familles.includes(c.type));
+    if(pool.length===0){
+        pool=cartes.filter(c=>c.rarete===rarete);
+    }
     return pool[Math.floor(Math.random()*pool.length)];
 }
  
 const statusText=document.getElementById("opening-status");
 let boosterSelectionne=null;
+let LiSelectionne=null;
 openBtn.addEventListener("click",()=>{
-    const config=typesBoosters[boosterSelectionne]|| configParDefaut ;
-   let message="";
-   const collection=JSON.parse(localStorage.getItem("mythoriaCollection")) || [];
-
     if(!boosterSelectionne){
-        statusText.textContent="selectionne d abord un booster"
-        return;
+        statusText.textContent="slectionne d abord un booster";
+             return ;
     }
+    const config=typesBoosters[boosterSelectionne]|| configParDefaut ;
+   const collection=JSON.parse(localStorage.getItem("mythoriaCollection")) || [];
+   let message="";
+   const index=boosters.findIndex(b=>b.type===boosterSelectionne);
+   if(index!==-1){
+     boosters.splice(index,1);
+   }
+   localStorage.setItem("mythoriaBoosters",JSON.stringify(boosters));
+   const restant = boosters.filter(b=>b.type===boosterSelectionne).length ;
+   if (restant===0){
+    LiSelectionne.remove();
+    boosterSelectionne=null ;
+    selectedNmae.textContent="aucun booster selectionne";
+
+   }else{
+    LiSelectionne.textContent=boosterSelectionne+"*"+restant;
+   }
+    
 
    const UnDiv=document.createElement("div");
    const uneUl=document.createElement("ul");
@@ -134,11 +168,15 @@ openBtn.addEventListener("click",()=>{
     img.classList.add("w-32","rounded-lg","mx-auto");
 
     const texte=document.createElement("p");
-    texte.textContent=carte.nom+"("+carte.rarete+")";
+    texte.textContent=carte.nom +"("+carte.rarete+")";
+    texte.classList.add("font-bold","text-amber-200");
 
+    const infos=document.createElement("p");
+    infos.textContent="type:"+carte.type+"| ⚔"+carte.attaque+"  🛡"+carte.defense ;
     Uneli.appendChild(img);
     Uneli.appendChild(texte);
-    uneUl.appendChild(Uneli);
+    Uneli.appendChild(infos)
+    uneUl.appendChild(Uneli)
     Uneli.classList.add("text-center" ,"text-white","m-4");
 
     if(carte.rarete==="Légendaire"){
@@ -159,5 +197,3 @@ openBtn.addEventListener("click",()=>{
    statusText.textContent=message || "booster ouvert : que des cartes communes cetee fois";
 
 });
-
-// je doit ajoter maintenat la fonction pour diminuer quantite de boosters lors de ca ouverture , et ajouter la supression du selection dun bossters lors de sa ouvertir 
