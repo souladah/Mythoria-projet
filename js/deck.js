@@ -27,7 +27,7 @@ function afficher(){
     cartesUniques.forEach(carte => {
         const dansDeck=deck.includes(carte.nom);
         const div=document.createElement("div");
-        div.classList.add("rounded-lg","border-amber-300/20","bg-slate-900","p-3","text-center","w-36");
+        div.classList.add("rounded-lg","border","border-amber-300/20","bg-slate-900","p-3","text-center","w-36");
         const img=document.createElement("img");
         img.src=cheminImage(carte);
         img.alt=carte.nom;
@@ -83,9 +83,9 @@ function afficher(){
         }
         const carteDeck=cartesUniques.find(c=>c.nom===nom);
         const imgDeck=document.createElement("img");
-        img.src=cheminImage(carteDeck);
+        imgDeck.src=cheminImage(carteDeck);
         imgDeck.alt=nom;
-        imgDeck.classList,add("w-12","rounded");
+        imgDeck.classList.add("w-12","rounded");
 
         const gauche=document.createElement("div");
         gauche.classList.add("flex","items-center","gap-3");
@@ -108,7 +108,7 @@ function afficher(){
         totalAtt+=c.attaque;
         totalDef+=c.defense;
         parType[c.type]=(parType[c.type]||0)+1;
-        parRarete[c.rarete]=(parRarete[c.raretearete]||0)+1;
+        parRarete[c.rarete]=(parRarete[c.rarete]||0)+1;
     });
     const stats=document.createElement("div");
     stats.classList.add("mt-6","text-center","text-slate-300");
