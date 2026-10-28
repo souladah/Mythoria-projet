@@ -1,7 +1,6 @@
 let boosters = JSON.parse(
     localStorage.getItem("mythoriaBoosters")
 ) || [];
-
 const boosterList = document.getElementById("booster-list");
 const ul = document.createElement("ul");
 
