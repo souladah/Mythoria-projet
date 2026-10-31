@@ -19,25 +19,11 @@ for (let i = 0; i < ajoutBtn.length; i++) {
         const prix = Number(ajoutBtn[i].dataset.price);//dataset.price in html atribute data-Pric
         const quantite = Number(ajoutBtn[i].previousElementSibling.value);
 
-        if (!Number.isInteger(quantite) || quantite <= 0) {
+        if (!quantiteValide(quantite)) {
             alert("Veuillez choisir une quantité entière valide.");
             return;
         }
-
-        const produitExistant = panierProduits.find(
-            p => p.nom === nom
-        );
-
-        if (produitExistant) {
-            produitExistant.quantite += quantite;
-        } else {
-            panierProduits.push({
-                nom: nom,
-                prix: prix,
-                quantite: quantite
-            });
-        }
-
+        ajoutProduit(nom,prix,quantite);
         sauvegarderPanier();
         afficherPanier();
     });
@@ -50,7 +36,24 @@ openPanier.addEventListener("click", () => {
 closBtn.addEventListener("click", () => {
     panier.classList.add("hidden");
 });
+function quantiteValide(quantite){
+    return Number.isInteger(quantite)&& quantite>0 ;
+}
+function ajoutProduit(nom,prix,quantite){
+const produitExistant = panierProduits.find(
+            p => p.nom === nom
+        );
 
+        if (produitExistant) {
+            produitExistant.quantite += quantite;
+        } else {
+            panierProduits.push({
+                nom: nom,
+                prix: prix,
+                quantite: quantite
+            });
+        }
+};
 function calculerTotaux(){
     let totalCalcul=0;
     let quantiteTotale=0;
