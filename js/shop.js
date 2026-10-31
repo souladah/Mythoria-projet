@@ -15,7 +15,11 @@ let panierProduits = JSON.parse(
 
 for (let i = 0; i < ajoutBtn.length; i++) {
     ajoutBtn[i].addEventListener("click", () => {
-        const nom = ajoutBtn[i].dataset.name;
+       gererClicAjout(ajoutBtn[i]);
+    });
+}
+function gererClicAjout(bouton){
+      const nom = ajoutBtn[i].dataset.name;
         const prix = Number(ajoutBtn[i].dataset.price);//dataset.price in html atribute data-Pric
         const quantite = Number(ajoutBtn[i].previousElementSibling.value);
 
@@ -26,9 +30,7 @@ for (let i = 0; i < ajoutBtn.length; i++) {
         ajoutProduit(nom,prix,quantite);
         sauvegarderPanier();
         afficherPanier();
-    });
-}
-
+};
 openPanier.addEventListener("click", () => {
     panier.classList.remove("hidden");
 });
@@ -39,6 +41,7 @@ closBtn.addEventListener("click", () => {
 function quantiteValide(quantite){
     return Number.isInteger(quantite)&& quantite>0 ;
 }
+
 function ajoutProduit(nom,prix,quantite){
 const produitExistant = panierProduits.find(
             p => p.nom === nom
