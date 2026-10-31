@@ -9,29 +9,56 @@ const closBtn = document.getElementById("close-panier");
 const openPanier = document.getElementById("cart-icon-btn");
 const ajoutBtn = document.querySelectorAll(".btn-add-cart");// pour selectionner tout les btn dajout de boosters au pnier
 
+// donnees
 let panierProduits = JSON.parse(
     localStorage.getItem("panierMythoria")
 ) || [];
 
-
-function gererClicAjout(bouton){
-      const nom = bouton.dataset.name;
-        const prix = Number(bouton.dataset.price);//dataset.price in html atribute data-Pric
-        const quantite = Number(bouton.previousElementSibling.value);
-
-        if (!quantiteValide(quantite)) {
-            alert("Veuillez choisir une quantité entière valide.");
-            return;
-        }
-        ajoutProduit(nom,prix,quantite);
-        sauvegarderPanier();
-        afficherPanier();
-};
-
+// stockage 
+function sauvegarderPanier() {
+    localStorage.setItem(
+        "panierMythoria",
+        JSON.stringify(panierProduits)
+    );
+}
+// validation de qunatite
 function quantiteValide(quantite){
     return Number.isInteger(quantite)&& quantite>0 ;
 }
 
+// calcul de contour et total du commande
+function calculerTotaux(){
+    let totalCalcul=0;
+    let quantiteTotale=0;
+    for(let i=0;i<panierProduits.length;i++){
+        totalCalcul=totalCalcul+panierProduits[i].prix*panierProduits[i].quantite ;
+        quantiteTotale=quantiteTotale+panierProduits[i].quantite ;
+    }
+    return { totalCalcul , quantiteTotale };
+}
+
+// augmenter diminuer et supprimer la qunatite d une comande
+function augmenterQuantite(index){
+    panierProduits[index].quantite++;
+}
+function diminuerQuantite(index){
+    if(panierProduits[index].quantite>1){
+        panierProduits[index].quantite--;
+    }else{
+        panierProduits.splice(index,1);
+    }
+}
+function supprimerProduit(index){
+    panierProduits.splice(index,1);
+}
+
+// vider le panier 
+function vider() {
+    panierProduits.length = 0;
+    sauvegarderPanier();
+    afficherPanier();
+}
+// ajout dun produit 
 function ajoutProduit(nom,prix,quantite){
 const produitExistant = panierProduits.find(
             p => p.nom === nom
@@ -46,27 +73,21 @@ const produitExistant = panierProduits.find(
                 quantite: quantite
             });
         }
-};
-function calculerTotaux(){
-    let totalCalcul=0;
-    let quantiteTotale=0;
-    for(let i=0;i<panierProduits.length;i++){
-        totalCalcul=totalCalcul+panierProduits[i].prix*panierProduits[i].quantite ;
-        quantiteTotale=quantiteTotale+panierProduits[i].quantite ;
-    }
-    return { totalCalcul , quantiteTotale };
 }
+
+// afficher contour et total
 function afficherTotaux(){
     const totaux=calculerTotaux();
     total.textContent = totaux.totalCalcul.toFixed(2) + " €";
     contour.textContent =  totaux.quantiteTotale;
 }
+// afichier panier vide
 function afficherPanierVide(){
     mesg.textContent="Votre panier est vide";
     mesg.style.display="list-item";
     listComande.appendChild(mesg);
 }
-
+// create + - et supprimer
 function creerBouton(text,action){
     const bouton=document.createElement("button");
     bouton.textContent=text;
@@ -74,15 +95,16 @@ function creerBouton(text,action){
     bouton.addEventListener("click",()=>{
         action();
         sauvegarderPanier();
-        afficherPanier()
+        afficherPanier();
     })
     return bouton ;
 }
+// creer les li
 function creerLigneProduit(produit,index){
     const ligne=document.createElement("li");
     ligne.textContent=
       produit.nom+" "+
-      produit.prix.toFixed(2)+" €  × "+
+      produit.prix.toFixed(2)+" € × "+
       produit.quantite+" = "+
       (produit.prix*produit.quantite).toFixed(2)+" € ";
 
@@ -102,19 +124,7 @@ function creerLigneProduit(produit,index){
     return ligne ;
 }
 
-function augmenterQuantite(index){
-    panierProduits[index].quantite++;
-}
-function diminuerQuantite(index){
-    if(panierProduits[index].quantite>1){
-        panierProduits[index].quantite--;
-    }else{
-        panierProduits.splice(index,1);
-    }
-}
-function supprimerProduit(index){
-    panierProduits.splice(index,1);
-}
+// affichage
 function afficherPanier() {
     afficherTotaux();
 
@@ -135,23 +145,22 @@ function afficherPanier() {
     }
 }
 
-function sauvegarderPanier() {
-    localStorage.setItem(
-        "panierMythoria",
-        JSON.stringify(panierProduits)
-    );
+// ajout clic
+function gererClicAjout(bouton){
+      const nom = bouton.dataset.name;
+        const prix = Number(bouton.dataset.price);//dataset.price in html atribute data-Pric
+        const quantite = Number(bouton.previousElementSibling.value);
+
+        if (!quantiteValide(quantite)) {
+            alert("Veuillez choisir une quantité entière valide.");
+            return;
+        }
+        ajoutProduit(nom,prix,quantite);
+        sauvegarderPanier();
+        afficherPanier();
 }
 
-function vider() {
-    panierProduits.length = 0;
-    sauvegarderPanier();
-    afficherPanier();
-}
-
-
-
-
-
+// sauvegarder les boosters achter dans  local storage
 function ajouterBoostersInventaire(){
      let inventaire = JSON.parse(
         localStorage.getItem("mythoriaBoosters")
@@ -172,6 +181,7 @@ function ajouterBoostersInventaire(){
     );
 
 }
+// comander
 function commander(){
   if (panierProduits.length === 0) {
         alert("Votre panier est vide.");
@@ -186,22 +196,20 @@ function commander(){
     vider();
 }
 
+// les events
 function initialiserEvenements(){
     for(let i=0; i<ajoutBtn.length;i++){
         ajoutBtn[i].addEventListener("click",()=>{
-            gererClicAjout(ajoutBtn[i])
+            gererClicAjout(ajoutBtn[i]);
         });
     }
-    openPanier.addEventListener("click", () => {
-    panier.classList.remove("hidden");
-});
-
-closBtn.addEventListener("click", () => {
-    panier.classList.add("hidden");
-});
-viderBtn.addEventListener("click", vider);
-comanderBtn.addEventListener("click",commander)
-};
+        openPanier.addEventListener("click", () => {
+           panier.classList.remove("hidden");});
+        closBtn.addEventListener("click", () => {
+           panier.classList.add("hidden");});
+        viderBtn.addEventListener("click", vider);
+        comanderBtn.addEventListener("click",commander);
+}
 
 
 initialiserEvenements();
