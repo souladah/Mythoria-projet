@@ -1,37 +1,11 @@
-let boosters = JSON.parse(
-    localStorage.getItem("mythoriaBoosters")
-) || [];
 const boosterList = document.getElementById("booster-list");
-const ul = document.createElement("ul");
-
-boosterList.innerHTML = "";
-
 const selectedNmae=document.getElementById("selected-booster-name");
 const LaSection=document.getElementById("section");
-
-const imagesBoosters={
-    "Beginner Pack":"./assets/images/boosters/pack-debutant.png",
-    "Summoning of the Legends":"./assets/images/boosters/pack-legendes.png",
-    "Dark Summoning":"./assets/images/boosters/booster-obscur.png",
-    "Lucky Pack":"./assets/images/boosters/booster-chance.png"
-};
-
 const boosterVisual=document.getElementById("booster-visual");
-const imgBooster=document.createElement("img");
-imgBooster.classList.add("hidden","h-40","object-contain","rounded-lg");
-boosterVisual.prepend(imgBooster);
-function afficherImageBooster(type){
-    if(type && imagesBoosters[type]){
-        imgBooster.src=imagesBoosters[type];
-        imagesBoosters.alt=type;
-        imgBooster.classList.remove("hidden");
-    }else{
-        imgBooster.classList.add("hidden");
-    }
-}
+const openBtn=document.getElementById("open-booster-btn");
+const statusText=document.getElementById("opening-status");
 
-const toutLesLI=boosterList.querySelectorAll("li");
-
+// donnees
 const cartes = [
     { nom: "Apprenti", image: "apprenti.png", rarete: "Commune", type: "Serviteur", attaque: 2, defense: 2 },
     { nom: "Aria", image: "aria.png", rarete: "Commune", type: "Héros", attaque: 3, defense: 1 },
@@ -50,10 +24,74 @@ const cartes = [
     { nom: "Ombre vorace", image: "ombre-vorace.png", rarete: "Rare", type: "Serviteur", attaque: 5, defense: 4 },
     { nom: "Portail", image: "portail.png", rarete: "Épique", type: "Sort", attaque: 0, defense: 8 }
 ];
-const openBtn=document.getElementById("open-booster-btn");
+
+const imagesBoosters={
+    "Beginner Pack":"./assets/images/boosters/pack-debutant.png",
+    "Summoning of the Legends":"./assets/images/boosters/pack-legendes.png",
+    "Dark Summoning":"./assets/images/boosters/booster-obscur.png",
+    "Lucky Pack":"./assets/images/boosters/booster-chance.png"
+};
+
+const typesBoosters={
+    "Beginner Pack":{
+        nbCartes:5,
+        familles:["Héros","Monstre","Serviteur","Sort"],
+        probas:{"Commune":70,"Rare":22,"Épique":7,"Légendaire":1}
+    },
+    "Summoning of the Legends":{
+        nbCartes:5,
+        familles:["Héros","Monstre","Serviteur","Sort"],
+        probas:{"Commune":30,"Rare":30,"Épique":25,"Légendaire":15}
+    },
+    "Dark Summoning":{
+        nbCartes:5,
+        familles:["Monstre","Serviteur","Sort"],
+        probas:{"Commune":40,"Rare":30,"Épique":20,"Légendaire":10}
+    },
+    "Lucky Pack":{
+        nbCartes:5,
+        familles:["Héros","Monstre","Serviteur","Sort"],
+        probas:{"Commune":40,"Rare":25,"Épique":20,"Légendaire":15}
+    }
+};
+
+const configParDefaut={
+    familles:["Héros","Monstre","Serviteur","Sort"],
+    probas:{"Commune":60,"Rare":25,"Épique":10,"Légendaire":5}
+};
+
+// RECUPERE LES boosters acheter depuis local storage
+let boosters = JSON.parse(localStorage.getItem("mythoriaBoosters")) || [];
 let boosterSelectionne=null;
 let LiSelectionne=null;
-const Lasection=document.getElementById("section");
+
+
+
+boosterList.innerHTML = "";
+
+
+
+function creerImageBooster(){
+    const img=document.createElement("img");
+    img.classList.add("hidden","h-40","object-contain","rounded-lg");
+    boosterVisual.prepend(img);
+    return img ;
+}
+
+const imgBooster=creerImageBooster();
+
+function afficherImageBooster(type){
+    if(type && imagesBoosters[type]){
+        imgBooster.src=imagesBoosters[type];
+        imagesBooster.alt=type;
+        imgBooster.classList.remove("hidden");
+    }else{
+        imgBooster.classList.add("hidden");
+    }
+}
+
+
+
 if (boosters.length === 0) { 
     boosterList.textContent = "Tu n'as aucun booster.";
 } else {
@@ -96,34 +134,9 @@ if (boosters.length === 0) {
 boosterList.appendChild(ul);
 }
 
-const typesBoosters={
-    "Beginner Pack":{
-        nbCartes:5,
-        familles:["Héros","Monstre","Serviteur","Sort"],
-        probas:{"Commune":70,"Rare":22,"Épique":7,"Légendaire":1}
-    },
-    "Summoning of the Legends":{
-        nbCartes:5,
-        familles:["Héros","Monstre","Serviteur","Sort"],
-        probas:{"Commune":30,"Rare":30,"Épique":25,"Légendaire":15}
-    },
-    "Dark Summoning":{
-        nbCartes:5,
-        familles:["Monstre","Serviteur","Sort"],
-        probas:{"Commune":40,"Rare":30,"Épique":20,"Légendaire":10}
-    },
-    "Lucky Pack":{
-        nbCartes:5,
-        familles:["Héros","Monstre","Serviteur","Sort"],
-        probas:{"Commune":40,"Rare":25,"Épique":20,"Légendaire":15}
-    }
-};
 
-const configParDefaut={
-    nbCartes:5,
-    familles:["Héros","Monstre","Serviteur","Sort"],
-    probas:{"Commune":60,"Rare":25,"Épique":10,"Légendaire":5}
-};
+
+
 function tirerRarete(probas){
     let total=0;
     for(const r in probas){
@@ -148,7 +161,6 @@ function tirerCarte(config,dejaTirees){
     return pool[Math.floor(Math.random()*pool.length)];
 }
  
-const statusText=document.getElementById("opening-status");
 
 openBtn.addEventListener("click",()=>{
     if(!boosterSelectionne){

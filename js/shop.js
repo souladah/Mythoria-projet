@@ -96,7 +96,7 @@ function creerBouton(text,action){
         action();
         sauvegarderPanier();
         afficherPanier();
-    })
+    });
     return bouton ;
 }
 // creer les li
