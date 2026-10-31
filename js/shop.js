@@ -13,15 +13,11 @@ let panierProduits = JSON.parse(
     localStorage.getItem("panierMythoria")
 ) || [];
 
-for (let i = 0; i < ajoutBtn.length; i++) {
-    ajoutBtn[i].addEventListener("click", () => {
-       gererClicAjout(ajoutBtn[i]);
-    });
-}
+
 function gererClicAjout(bouton){
-      const nom = ajoutBtn[i].dataset.name;
-        const prix = Number(ajoutBtn[i].dataset.price);//dataset.price in html atribute data-Pric
-        const quantite = Number(ajoutBtn[i].previousElementSibling.value);
+      const nom = bouton.dataset.name;
+        const prix = Number(bouton.dataset.price);//dataset.price in html atribute data-Pric
+        const quantite = Number(bouton.previousElementSibling.value);
 
         if (!quantiteValide(quantite)) {
             alert("Veuillez choisir une quantité entière valide.");
@@ -31,13 +27,7 @@ function gererClicAjout(bouton){
         sauvegarderPanier();
         afficherPanier();
 };
-openPanier.addEventListener("click", () => {
-    panier.classList.remove("hidden");
-});
 
-closBtn.addEventListener("click", () => {
-    panier.classList.add("hidden");
-});
 function quantiteValide(quantite){
     return Number.isInteger(quantite)&& quantite>0 ;
 }
@@ -92,7 +82,7 @@ function creerLigneProduit(produit,index){
     const ligne=document.createElement("li");
     ligne.textContent=
       produit.nom+" "+
-      produit.prix.toFixed(2)+" €  x "+
+      produit.prix.toFixed(2)+" €  × "+
       produit.quantite+" = "+
       (produit.prix*produit.quantite).toFixed(2)+" € ";
 
@@ -158,17 +148,12 @@ function vider() {
     afficherPanier();
 }
 
-viderBtn.addEventListener("click", () => {
-    vider();
-});
 
-comanderBtn.addEventListener("click", () => {
-    if (panierProduits.length === 0) {
-        alert("Votre panier est vide.");
-        return;
-    }
 
-    let inventaire = JSON.parse(
+
+
+function ajouterBoostersInventaire(){
+     let inventaire = JSON.parse(
         localStorage.getItem("mythoriaBoosters")
     ) || [];
 
@@ -186,13 +171,38 @@ comanderBtn.addEventListener("click", () => {
         JSON.stringify(inventaire)
     );
 
+}
+function commander(){
+  if (panierProduits.length === 0) {
+        alert("Votre panier est vide.");
+        return;
+    }
+    ajouterBoostersInventaire();
     alert(
         "Commande validée ! Total : " +
         total.textContent +
         "\nTes boosters sont disponibles dans Ouverture."
     );
-
     vider();
+}
+
+function initialiserEvenements(){
+    for(let i=0; i<ajoutBtn.length;i++){
+        ajoutBtn[i].addEventListener("click",()=>{
+            gererClicAjout(ajoutBtn[i])
+        });
+    }
+    openPanier.addEventListener("click", () => {
+    panier.classList.remove("hidden");
 });
 
+closBtn.addEventListener("click", () => {
+    panier.classList.add("hidden");
+});
+viderBtn.addEventListener("click", vider);
+comanderBtn.addEventListener("click",commander)
+};
+
+
+initialiserEvenements();
 afficherPanier();
