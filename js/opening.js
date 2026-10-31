@@ -67,7 +67,6 @@ let LiSelectionne=null;
 
 
 
-boosterList.innerHTML = "";
 
 
 
@@ -89,50 +88,45 @@ function afficherImageBooster(type){
         imgBooster.classList.add("hidden");
     }
 }
-
-
-
-if (boosters.length === 0) { 
-    boosterList.textContent = "Tu n'as aucun booster.";
-} else {
-    const compte={};
-
-    for (let i = 0; i < boosters.length; i++) {
-
-        const type=boosters[i].type;
-        compte[type]=compte[type]?compte[type] +1 :1;
+function compter(type){
+    return boosters.filter(b=>b.type===type).length;
+}
+function choisirBooster(li,type){
+    if(LiSelectionne){
+        LiSelectionne.classList.remove("ring-4","ring-purple-500");
     }
-    const ul=document.createElement("ul");
+    LiSelectionne=li;
+    boosterSelectionne=type;
+    li.classList.add("ring-4","ring-purple-500");
+    selectedNmae.textContent=type;
+    afficherImageBooster(type);
+}
+function afficherListeBoosters(){
+    boosterList.innerHTML="";
+    if(boosters.length==0){
+        boosterList.textContent="tu n as aucun booster" ;
+        return ;
+    }
+    const types={};
+    boosters.forEach(b => { types[b.type]==true ; });
+    const ul= document.createElement("ul");
+    ul.className="space-y-3";
+    for (const type in types){
+        const li=document.createElement("li");
+        li.textContent=type+" × "+compter(type);
+        li.className="cursor-pointer rounded-lg border-amber-300/30 bg-slate-900 px-4 py-3 text-center text-amber-200";
+        li.addEventListener("click",()=>choisirBooster(li,type));
+        ul.appendChild(li);
+    }
+    boosterList.appendChild(ul);
+}
 
-    for(const type in compte){
-        const li = document.createElement("li");
-            
-        li.dataset.type=type;
-        li.dataset.quantite=compte[type];
-        li.textContent=type+"*"+compte[type]
-            
-            li.classList.add(
-                "rounded-lg",
-                "text-center",
-                "bg-white",
-                "text-amber-500",
-                "m-5"
-            );
-            li.addEventListener("click",()=>{
-                LiSelectionne=li; 
-                boosterSelectionne=type;                 
-                selectedNmae.textContent=type;
-                afficherImageBooster(type);
-                const toustesLI=ul.querySelectorAll("li");
-                for(let j=0;j<toustesLI.length;j++){
-                    toustesLI[j].classList.remove("ring-4","ring-purple-500");
-                }
-                li.classList.add("ring-4","ring-purple-500");
-            })
-            ul.appendChild(li);
-}
+
+
+
+
 boosterList.appendChild(ul);
-}
+
 
 
 
