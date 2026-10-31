@@ -51,17 +51,19 @@ closBtn.addEventListener("click", () => {
     panier.classList.add("hidden");
 });
 
-function afficherPanier() {
-    let totalCalcul = 0;
-    let quantiteTotale = 0;
-
-    for (let i = 0; i < panierProduits.length; i++) {
-        totalCalcul += panierProduits[i].prix * panierProduits[i].quantite;
-        quantiteTotale += panierProduits[i].quantite;
+function calculerTotaux(){
+    let totalCalcul=0;
+    let quantiteTotale=0;
+    for(let i=0;i<panierProduits.length;i++){
+        totalCalcul=totalCalcul+panierProduits[i].prix*panierProduits[i].quantite ;
+        quantiteTotale=quantiteTotale+panierProduits[i].quantite ;
     }
-
-    total.textContent = totalCalcul.toFixed(2) + " €";
-    contour.textContent = quantiteTotale;
+    return { totalCalcul , quantiteTotale };
+}
+function afficherPanier() {
+   const totaux=calculerTotaux();
+    total.textContent = totaux.totalCalcul.toFixed(2) + " €";
+    contour.textContent =  totaux.quantiteTotale.toFixed(2) + " €";
 
     listComande.innerHTML = "";
 
