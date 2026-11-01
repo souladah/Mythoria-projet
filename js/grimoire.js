@@ -1,7 +1,10 @@
 const collection=JSON.parse(
     localStorage.getItem("mythoriaCollection")
 )|| [];
-
+const collectionCartes=document.getElementById("collection-cartes");
+const filtreType=document.getElementById("filtre-type");
+const filtreRarete=document.getElementById("filtre-rarete");
+const grimoireVide=document.getElementById("grimoire-vide")
 const quantites={};
 const cartesUniques=[];
 
@@ -19,16 +22,15 @@ for (let i=0;i<collection.length ;i++){
      
 }
 
-const collectionCartes=document.getElementById("collection-cartes");
-
-const fitreType=document.getElementById("filtre-type");
-const filtreRarete=document.getElementById("filtre-rarete");
-
 function afficherCartes(){
     collectionCartes.innerHTML="";
+    
+    if(collection.length===0){
+        grimoireVide.classList.remove("hidden");
+        return ;
+    }
 
-
-    const typeChoisie=fitreType.value;
+    const typeChoisie=filtreType.value;
     const rareteChoisie=filtreRarete.value;
 
     for(let i=0;i<cartesUniques.length;i++){
@@ -38,7 +40,8 @@ function afficherCartes(){
               const div=document.createElement("div");
         div.classList.add(
         "rounded-lg", 
-        "border-2",                                       
+        "border-2",  
+        "border-amber-300/30",                                  
         "bg-slate-900",
         "p-3",
         "text-center",
@@ -54,7 +57,7 @@ function afficherCartes(){
                 img.classList.add("mx-auto","w-32","rounded-lg");
 
                 const nom=document.createElement("p");
-                nom.textContent=carte.nom +"*"+quantites[carte.nom];
+                nom.textContent=carte.nom ;
                 nom.classList.add("mt-2","font-bold","text-amber-200");
 
                 div.appendChild(img);
@@ -64,5 +67,5 @@ function afficherCartes(){
         }
 }
 filtreRarete.addEventListener("change",afficherCartes);
-fitreType.addEventListener("change",afficherCartes);
+filtreType.addEventListener("change",afficherCartes);
 afficherCartes();

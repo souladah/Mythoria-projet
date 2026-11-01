@@ -41,13 +41,13 @@ const boostersConfig={
     },
     "Dark Summoning" :{
         image:"booster-obscur.png" ,
-        familles:ToutesFamilles,
+        familles:["Monstre", "Serviteur", "Sort"],
         probas:{"Commune":40,"Rare":30,"Épique":20,"Légendaire":10}
     },
     "Lucky Pack" :{
         image:"booster-chance.png" ,
         familles:ToutesFamilles,
-        probas:{"Commune":70,"Rare":22,"Épique":7,"Légendaire":1}
+        probas:{"Commune":40,"Rare":25,"Épique":20,"Légendaire":15}
     }
 }
 
@@ -66,7 +66,7 @@ boosterVisual.prepend(imgBooster);
 function afficherListe(){
     boosterList.innerHTML="";
     if(boosters.length===0){
-        boosterList.textContent="tu n ' as aucun booster" ;
+        boosterList.textContent="tu n'as aucun booster" ;
         boosterList.classList.add("text-amber-500")
         return ;
     }
@@ -168,7 +168,7 @@ openBtn.addEventListener("click",()=>{
        LaSection.innerHTML=html+"</ul>";
        statusText.textContent=message;
 
-   const restant = boosters.filter(b=>b.type===boosterSelectionne).length ;
+   const restant = boosters.filter(b=>b.type===choisi).length ;
    if (restant===0){
      choisirBooster(null)
 
