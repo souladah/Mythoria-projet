@@ -5,23 +5,22 @@ const collectionCartes=document.getElementById("collection-cartes");
 const filtreType=document.getElementById("filtre-type");
 const filtreRarete=document.getElementById("filtre-rarete");
 const grimoireVide=document.getElementById("grimoire-vide")
-const quantites={};
-const cartesUniques=[];
+const cartesUniques=[];// va contenir nom des cart pas de diplication
 
 for (let i=0;i<collection.length ;i++){
-    const carte=collection[i];
+    
+       let dejaVue=false;
+       for(let j=0;j<cartesUniques.length;j++){
+                if(cartesUniques[j].nom===collection[i].nom){
+                    dejaVue=true;
+            }     
+       }
+       if(!dejaVue){
+                cartesUniques.push(collection[i]);
 
-    if(quantites[carte.nom]){ // verifier si objet qunatite vide ou nom
-        quantites[carte.nom]++; // si pas vide donc la quantite sera adition de quantite exist et quantite nouveau puisque jai empecher de obtenir meme carte dans chauqe ouverture donc il va augmenter juste par 1
-
-    }else{
-        quantites[carte.nom]=1;
-        cartesUniques.push(carte);
-        
-    }
-     
+                }
 }
-
+localStorage.setItem("mythoria-uniqu",JSON.stringify(cartesUniques));
 function afficherCartes(){
     collectionCartes.innerHTML="";
     
@@ -29,6 +28,8 @@ function afficherCartes(){
         grimoireVide.classList.remove("hidden");
         return ;
     }
+   grimoireVide.classList.add("hidden");
+
 
     const typeChoisie=filtreType.value;
     const rareteChoisie=filtreRarete.value;
@@ -36,33 +37,28 @@ function afficherCartes(){
     for(let i=0;i<cartesUniques.length;i++){
         const carte=cartesUniques[i];
         if((typeChoisie==="all" || carte.type===typeChoisie) &&
-        (rareteChoisie ==="all" || carte.rarete=== rareteChoisie)){
-              const div=document.createElement("div");
-        div.classList.add(
-        "rounded-lg", 
-        "border-2",  
-        "border-amber-300/30",                                  
-        "bg-slate-900",
-        "p-3",
-        "text-center",
-        "text-white"
-        );
+        (rareteChoisie ==="all" || carte.rarete=== rareteChoisie)){// 25 cas couvert ; all et all=1 , c1 et c2 4*4=16 , c1 et all=4*1=4 , c2 et all 4*1=4 donc total=25 
+                const div=document.createElement("div");
+                div.classList.add(
+                "rounded-lg", 
+                "border-2",  
+                "border-amber-300/30",                                  
+                "bg-slate-900",
+                "p-3",
+                "text-center",
+                "text-white"
+                );
                 const img=document.createElement("img");
-                if(carte.image.startsWith("./assets/images/cards/")){
-                    img.src=carte.image;
-                }else{
-                    img.src="./assets/images/cards/"+ carte.image;
-                }
+                img.src="./assets/images/cards/"+carte.image;
                 img.alt=carte.nom;
                 img.classList.add("mx-auto","w-32","rounded-lg");
 
                 const nom=document.createElement("p");
                 nom.textContent=carte.nom ;
                 nom.classList.add("mt-2","font-bold","text-amber-200");
-
                 div.appendChild(img);
                 div.appendChild(nom);
-                collectionCartes.appendChild(div);
+                collectionCartes.appendChild(div);        
     }
         }
 }

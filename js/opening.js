@@ -54,12 +54,12 @@ const boostersConfig={
 
 // RECUPERE LES boosters acheter depuis local storage
 let boosters = JSON.parse(localStorage.getItem("mythoriaBoosters")) || [];
-let choisi=null ;
+let BoosterSelectione=null ;
 
 function afficherListe(){
     boosterList.innerHTML="";
     boosterVisual.innerHTML="";
-    
+
     if(boosters.length===0){
         boosterList.textContent="tu n'as aucun booster" ;
         boosterList.classList.add("text-amber-500")
@@ -72,21 +72,21 @@ function afficherListe(){
             div.textContent=b.nom+" × "+b.quantite;
             div.className="cursor-pointer rounded-lg border border-amber-300/30 bg-slate-900 px-4 py-3 text-center text-amber-200";
             div.addEventListener("click",function(){
-                choisi=b.nom;
+                BoosterSelectione=b.nom;
                 afficherListe();
             });  
-            if(choisi===b.nom) div.classList.add("ring-4","ring-purple-500");
+            if(BoosterSelectione===b.nom) div.classList.add("ring-4","ring-purple-500");
         boosterList.appendChild(div);
     }
-    if(choisi==null){
+    if(BoosterSelectione==null){
             selectedNmae.textContent= "Aucun booster sélectionné" ;
         }
         else{
-            selectedNmae.textContent=choisi;
+            selectedNmae.textContent=BoosterSelectione;
             const imgBooster=document.createElement("img");
             imgBooster.className="h-40 object-contain rounded-lg";
-            imgBooster.src="./assets/images/boosters/"+boostersConfig[choisi].image;
-            imgBooster.alt=choisi;
+            imgBooster.src="./assets/images/boosters/"+boostersConfig[BoosterSelectione].image;
+            imgBooster.alt=BoosterSelectione;
             boosterVisual.prepend(imgBooster);
 
         }
@@ -133,32 +133,33 @@ function tirerCarte(config,dejaTirees){// config objt contient img famiille prob
 }
  
 openBtn.addEventListener("click",()=>{
-    if(choisi==null){
+    if(BoosterSelectione==null){
         statusText.textContent="slectionne d abord un booster";
              return ;
     }
-    let booster=boosters.find(b=>b.nom===choisi);
-    if(!booster){ choisi=null;  afficherListe(); return ;}
+    let booster=boosters.find(b=>b.nom===BoosterSelectione);
+    if(!booster){ BoosterSelectione=null;  afficherListe(); return ;}
     booster.quantite--;
     const restant=booster.quantite;
-    if(restant<=0){
+    if(restant<=0){// supprimer un booster si sa quantite=0
         boosters=boosters.filter(b=>
-            b.nom!==choisi
+            b.nom!==BoosterSelectione
         );
     }
-    localStorage.setItem("mythoriaBoosters",JSON.stringify(boosters));
+    localStorage.setItem("mythoriaBoosters",JSON.stringify(boosters));// sauvegarde
    
-   const config=boostersConfig[choisi];
-   const tirage=[];
+   const config=boostersConfig[BoosterSelectione];
+   const CarteTirre=[];
    for(let i=0 ;i<NB_CARTES;i++){
-    tirage.push(tirerCarte(config,tirage));
+       CarteTirre.push(tirerCarte(config,CarteTirre));
    }
    const collection=JSON.parse(localStorage.getItem("mythoriaCollection"))||[];
-   localStorage.setItem("mythoriaCollection",JSON.stringify(collection.concat(tirage)));
+   localStorage.setItem("mythoriaCollection",JSON.stringify(collection.concat(CarteTirre)));
+
    let html='<ul class="flex flex-wrap justify-center">';
        let message="Booster ouvert : que des cartes communes cette fois.";
-       for(let i=0;i<tirage.length;i++){
-           const c=tirage[i];
+       for(let i=0;i<CarteTirre.length;i++){
+           const c=CarteTirre[i];
            html+='<li class="m-4 text-center text-white">';
            html+='<img src="./assets/images/cards/'+c.image+'" alt="'+c.nom+'" class="mx-auto w-32 rounded-lg">';
            html+='<p class="font-bold text-amber-200">'+c.nom+' ('+c.rarete+')</p>';
@@ -175,7 +176,7 @@ openBtn.addEventListener("click",()=>{
        LaSection.innerHTML=html+"</ul>";
 
    if (restant<=0){
-     choisi=null;
+     BoosterSelectione=null;
 
    }
       afficherListe();  

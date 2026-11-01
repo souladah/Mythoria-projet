@@ -1,21 +1,12 @@
 const MAX_DECK=16;
-const collection=JSON.parse(localStorage.getItem("mythoriaCollection")|| "[]");
 
-const cartesUniques=[];
-
-
-collection.forEach(carte=>{
-    if(!cartesUniques.some(c=>c.nom===carte.nom)){
-        cartesUniques.push(carte);
-    }
-});
+const cartesUniques=JSON.parse(localStorage.getItem("mythoria-uniqu"))||[];
 
 const Section=document.getElementById("section");
 Section.classList.add("mx-auto","max-w-5xl","px-10","text-white");
 
 
-let deck=JSON.parse(localStorage.getItem("mythoriaDeck")||"[]")
- .filter(nom=>cartesUniques.some(c=>c.nom===nom)).slice(0,MAX_DECK);
+let deck=JSON.parse(localStorage.getItem("mythoriaDeck")||"[]");
 function afficher(){
     Section.innerHTML='<h2 class="mb-6 text-center  text-2xl font-bold text-amber-200">MON DECK ('+deck.length +'/'+MAX_DECK+')</h2>';
     
@@ -42,10 +33,8 @@ function afficher(){
             "rounded-lg","border","border-amber-400","bg-slate-950/90",
             "mt-2","px-3","py-1","text-sm","text-amber-100"        );
         button.onclick=()=>{
-            if(deck.includes(carte.nom)){
+            if(dansDeck){
                 alert("carte deja ajouter");
-            }else if(deck.length>=MAX_DECK){
-                alert("deck complet !");
             }else{
                 deck.push(carte.nom);
                 sauvegarder();
@@ -110,32 +99,7 @@ function afficher(){
     });
     Section.appendChild(List)
     
-    let totalAtt=0 , totalDef=0;
-    const parType={};
-    const parRarete={};
-    deck.forEach(nom=>{
-        const c=cartesUniques.find(carte=>carte.nom===nom);
-        totalAtt+=c.attaque;
-        totalDef+=c.defense;
-        parType[c.type]=(parType[c.type]||0)+1;
-        parRarete[c.rarete]=(parRarete[c.rarete]||0)+1;
-    });
-    const stats=document.createElement("div");
-    stats.classList.add("mt-6","text-center","text-slate-300");
-
-    const lignes=[
-        "Nombre de cartes :"+deck.length+"/"+MAX_DECK ,
-        "attaque totale : " + totalAtt+"| Défense  totale :"+totalDef,
-        "Par type :"+Object.entries(parType).map(([k,v])=>k+"x"+v).join(", "),
-        "Par rarete :"+Object.entries(parRarete).map(([k,v])=>k+"x"+v).join(", "),
-    ];
-    lignes.forEach(t=>{
-        const p=document.createElement("p");
-        p.textContent=t;
-        stats.appendChild(p);
-
-    });
-    Section.appendChild(stats);
+    
 }
 
 function sauvegarder(){
