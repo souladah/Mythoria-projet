@@ -56,6 +56,7 @@ const typesBoosters={
 };
 
 const configParDefaut={
+    nbCartes:5 ,
     familles:["Héros","Monstre","Serviteur","Sort"],
     probas:{"Commune":60,"Rare":25,"Épique":10,"Légendaire":5}
 };
@@ -82,7 +83,7 @@ const imgBooster=creerImageBooster();
 function afficherImageBooster(type){
     if(type && imagesBoosters[type]){
         imgBooster.src=imagesBoosters[type];
-        imagesBooster.alt=type;
+        imgBooster.alt=type;
         imgBooster.classList.remove("hidden");
     }else{
         imgBooster.classList.add("hidden");
@@ -108,7 +109,7 @@ function afficherListeBoosters(){
         return ;
     }
     const types={};
-    boosters.forEach(b => { types[b.type]==true ; });
+    boosters.forEach(b => { types[b.type]=true ; });
     const ul= document.createElement("ul");
     ul.className="space-y-3";
     for (const type in types){
@@ -120,16 +121,6 @@ function afficherListeBoosters(){
     }
     boosterList.appendChild(ul);
 }
-
-
-
-
-
-boosterList.appendChild(ul);
-
-
-
-
 
 function tirerRarete(probas){
     let total=0;
@@ -177,7 +168,7 @@ openBtn.addEventListener("click",()=>{
     afficherImageBooster(null);
 
    }else{
-    LiSelectionne.textContent=boosterSelectionne+"*"+restant;
+    LiSelectionne.textContent=boosterSelectionne+" × "+restant;
    }
     
 
@@ -228,3 +219,5 @@ openBtn.addEventListener("click",()=>{
    statusText.textContent=message || "booster ouvert : que des cartes communes cetee fois";
 
 });
+
+afficherListeBoosters();
