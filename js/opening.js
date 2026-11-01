@@ -1,11 +1,11 @@
 const boosterList = document.getElementById("booster-list");
 const selectedNmae=document.getElementById("selected-booster-name");
-const LaSection=document.getElementById("section");
-const boosterVisual=document.getElementById("booster-visual");
+const LaSection=document.getElementById("section");// section ou les cartes vont safficher
+const boosterVisual=document.getElementById("booster-visual");// tout le div ou se trouver le selected booster
 const openBtn=document.getElementById("open-booster-btn");
-const statusText=document.getElementById("opening-status");
+const statusText=document.getElementById("opening-status");// message dans le bas
 
-// donnees
+// donnees chauque carte a nom, imgae , rarete , type , attaque , defense
 const cartes = [
     { nom: "Apprenti", image: "apprenti.png", rarete: "Commune", type: "Serviteur", attaque: 2, defense: 2 },
     { nom: "Aria", image: "aria.png", rarete: "Commune", type: "Héros", attaque: 3, defense: 1 },
@@ -56,80 +56,80 @@ const boostersConfig={
 let boosters = JSON.parse(localStorage.getItem("mythoriaBoosters")) || [];
 let choisi=null ;
 
-const imgBooster=document.createElement("img");
-imgBooster.hidden=true;
-imgBooster.className="h-40 object-contain rounded-lg";
-boosterVisual.prepend(imgBooster);
-
-
-
 function afficherListe(){
     boosterList.innerHTML="";
+    boosterVisual.innerHTML="";
+    
     if(boosters.length===0){
         boosterList.textContent="tu n'as aucun booster" ;
         boosterList.classList.add("text-amber-500")
         return ;
     }
-    const quantites={};
     for (let i=0 ; i<boosters.length ;i++) {
-        const type=boosters[i].type;
-        if(quantites[type]){
-            quantites[type]+=1;
-        }else{
-            quantites[type]=1;
-           
-        }
-    
-    }
-    for(const type in quantites){
-        const div=document.createElement("div");
-        div.textContent=type+" × "+quantites[type];
-        div.className="cursor-pointer rounded-lg border border-amber-300/30 bg-slate-900 px-4 py-3 text-center text-amber-200";
-        if(type===choisi) div.classList.add("ring-4","ring-purple-500");
-        div.addEventListener("click",function(){
-            choisirBooster(type)  
-    });
+        const b=boosters[i];
+
+            const div=document.createElement("div");
+            div.textContent=b.nom+" × "+b.quantite;
+            div.className="cursor-pointer rounded-lg border border-amber-300/30 bg-slate-900 px-4 py-3 text-center text-amber-200";
+            div.addEventListener("click",function(){
+                choisi=b.nom;
+                afficherListe();
+            });  
+            if(choisi===b.nom) div.classList.add("ring-4","ring-purple-500");
         boosterList.appendChild(div);
     }
-}
-function choisirBooster(type){
-    choisi=type;
-    if(type==null){
-        selectedNmae.textContent= "Aucun booster sélectionné" ;
-        imgBooster.hidden=true;
-    }
-    else{
-        selectedNmae.textContent=type;
-        imgBooster.src="./assets/images/boosters/"+boostersConfig[type].image;
-        imgBooster.alt=type;
-        imgBooster.hidden=false;
-    }
-    afficherListe();
+    if(choisi==null){
+            selectedNmae.textContent= "Aucun booster sélectionné" ;
+        }
+        else{
+            selectedNmae.textContent=choisi;
+            const imgBooster=document.createElement("img");
+            imgBooster.className="h-40 object-contain rounded-lg";
+            imgBooster.src="./assets/images/boosters/"+boostersConfig[choisi].image;
+            imgBooster.alt=choisi;
+            boosterVisual.prepend(imgBooster);
+
+        }
     
 }
-
+//pour le tirage je doit parcourir probas puis calculer total puis genere un nombre de 0 a total puis comprer si se nombre<probas[r] si ca donc rerte=r sinon soutration de nombre avec probas de r 
 function tirerRarete(probas){
     let total=0;
     for(const r in probas){
         total=total+probas[r];
     }
-    let tirage=Math.random()* total ;
+    let generatedNomber=Math.random()* total ;
     for(const r in probas){
-        if(tirage<probas[r]){
+        if(generatedNomber<probas[r]){
             return r ;
         }
-        tirage=tirage-probas[r];
+        generatedNomber=generatedNomber-probas[r];
     }
-    return "Commune";
+    return "Commune"; // si aucun r donc commune
 }
 
-function tirerCarte(config,dejaTirees){
-    let pool=[];
-    while(pool.length===0){
-        const rarete=tirerRarete(config.probas);
-        pool=cartes.filter(c=>c.rarete===rarete && config.familles.includes(c.type) && !dejaTirees.includes(c));    
-}
-    return pool[Math.floor(Math.random()*pool.length)];
+function tirerCarte(config,dejaTirees){// config objt contient img famiille probas , dejatire table conyient les carte deja tiree 
+    const CarteDisponibles = [];
+        for (let i = 0; i < cartes.length; i++) {
+            const carte = cartes[i];
+    
+            const typeAutorise = config.familles.includes(carte.type);
+            const dejaPrise = dejaTirees.includes(carte);
+    
+            if (typeAutorise && !dejaPrise) {
+                CarteDisponibles.push(carte);
+            }
+        }
+        // apres avoir definir les carte dsipo maintennat je doit trouver les cartes where sa rarete== la rarete je peux utiliser filter ici 
+        const rarete = tirerRarete(config.probas);
+        const pool = CarteDisponibles.filter(c=>c.rarete===rarete);
+        if (pool.length > 0) {
+            const position = Math.floor(Math.random() * pool.length);
+            return pool[position];
+        }else{                
+            const position = Math.floor(Math.random() * CarteDisponibles.length);
+            return CarteDisponibles[position];        
+        }     
 }
  
 openBtn.addEventListener("click",()=>{
@@ -137,8 +137,15 @@ openBtn.addEventListener("click",()=>{
         statusText.textContent="slectionne d abord un booster";
              return ;
     }
-    const index=boosters.findIndex(b=>b.type===choisi);
-    boosters.splice(index,1);
+    let booster=boosters.find(b=>b.nom===choisi);
+    if(!booster){ choisi=null;  afficherListe(); return ;}
+    booster.quantite--;
+    const restant=booster.quantite;
+    if(restant<=0){
+        boosters=boosters.filter(b=>
+            b.nom!==choisi
+        );
+    }
     localStorage.setItem("mythoriaBoosters",JSON.stringify(boosters));
    
    const config=boostersConfig[choisi];
@@ -166,17 +173,13 @@ openBtn.addEventListener("click",()=>{
            }
        }
        LaSection.innerHTML=html+"</ul>";
-       statusText.textContent=message;
 
-   const restant = boosters.filter(b=>b.type===choisi).length ;
-   if (restant===0){
-     choisirBooster(null)
+   if (restant<=0){
+     choisi=null;
 
-   }else{
-      afficherListe();  
    }
-});
-    
+      afficherListe();  
 
-   
+   statusText.textContent=message ;
+});
 afficherListe();

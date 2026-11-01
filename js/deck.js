@@ -3,10 +3,7 @@ const collection=JSON.parse(localStorage.getItem("mythoriaCollection")|| "[]");
 
 const cartesUniques=[];
 
-function cheminImage(carte){
-    return carte.image.startsWith("./assets/images/cards/")? carte.image :"./assets/images/cards/"+carte.image ;
 
-}
 collection.forEach(carte=>{
     if(!cartesUniques.some(c=>c.nom===carte.nom)){
         cartesUniques.push(carte);
@@ -29,12 +26,15 @@ function afficher(){
         const div=document.createElement("div");
         div.classList.add("rounded-lg","border","border-amber-300/20","bg-slate-900","p-3","text-center","w-36");
         const img=document.createElement("img");
-        img.src=cheminImage(carte);
+        img.src="./assets/images/cards/"+carte.image;
         img.alt=carte.nom;
         img.classList.add("mx-auto","w-24","rounded-lg");
         const nomCarte=document.createElement("p");
         nomCarte.textContent=carte.nom;
         nomCarte.classList.add("mt-2","text-sm","font-bold","text-amber-200");
+        const infos=document.createElement("p");
+        infos.textContent=carte.type+" | "+carte.rarete+" | ⚔ "+carte.attaque+" 🛡 "+carte.defense;
+        infos.classList.add("mt-1","text-xs","text-slate-300");
         const button=document.createElement("button");
         button.textContent=dansDeck ? "Dans le deck" : "Ajouter";
         button.disabled=dansDeck;   
@@ -54,6 +54,7 @@ function afficher(){
         };
         div.appendChild(img);
         div.appendChild(nomCarte);
+        div.appendChild(infos);
         div.appendChild(button);
         zoneAjout.appendChild(div);        
     });
@@ -75,6 +76,7 @@ function afficher(){
         boutton.classList.add("rounded-lg","border","border-red-500/40",
             "px-3","py-1","text-red-300"
         );
+        
 
         boutton.onclick=()=>{
             deck=deck.filter(carte=>carte!==nom);
@@ -83,16 +85,24 @@ function afficher(){
         }
         const carteDeck=cartesUniques.find(c=>c.nom===nom);
         const imgDeck=document.createElement("img");
-        imgDeck.src=cheminImage(carteDeck);
+        imgDeck.src="./assets/images/cards/"+carteDeck.image;
         imgDeck.alt=nom;
         imgDeck.classList.add("w-12","rounded");
+
+        const infosDeck=document.createElement("p");
+        infosDeck.textContent=carteDeck.type+" | "+carteDeck.rarete+" | ⚔ "+carteDeck.attaque+" 🛡 "+carteDeck.defense;        infosDeck.classList.add("mt-1","text-xs","text-slate-300");
+
+        const textes=document.createElement("div");
+        textes.appendChild(texte);
+        textes.appendChild(infosDeck);
 
         const gauche=document.createElement("div");
         gauche.classList.add("flex","items-center","gap-3");
         gauche.appendChild(imgDeck);
-        gauche.appendChild(texte);
+        gauche.appendChild(textes);
 
         li.appendChild(gauche);
+
         li.appendChild(boutton);
         List.appendChild(li);
 

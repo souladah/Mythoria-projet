@@ -21,6 +21,37 @@ function sauvegarderPanier() {
         JSON.stringify(panierProduits)
     );
 }
+// ajout dun produit 
+function ajoutProduit(nom,prix,quantite){
+const produitExistant = panierProduits.find(
+            p => p.nom === nom
+        );
+
+        if (produitExistant) {
+            produitExistant.quantite += quantite;
+        } else {
+            panierProduits.push({
+                nom: nom,
+                prix: prix,
+                quantite: quantite
+            });
+        }
+}
+// ajout clic
+function gererClicAjout(bouton){
+      const nom = bouton.dataset.name;
+        const prix = Number(bouton.dataset.price);//dataset.price in html atribute data-Pric
+        const quantite = Number(bouton.previousElementSibling.value);
+
+        if (!quantiteValide(quantite)) {
+            alert("Veuillez choisir une quantité entière valide.");
+            return;
+        }
+        ajoutProduit(nom,prix,quantite);
+        sauvegarderPanier();
+        afficherPanier();
+}
+
 // validation de qunatite
 function quantiteValide(quantite){
     return Number.isInteger(quantite)&& quantite>0 ;
@@ -58,22 +89,7 @@ function vider() {
     sauvegarderPanier();
     afficherPanier();
 }
-// ajout dun produit 
-function ajoutProduit(nom,prix,quantite){
-const produitExistant = panierProduits.find(
-            p => p.nom === nom
-        );
 
-        if (produitExistant) {
-            produitExistant.quantite += quantite;
-        } else {
-            panierProduits.push({
-                nom: nom,
-                prix: prix,
-                quantite: quantite
-            });
-        }
-}
 
 // afficher contour et total
 function afficherTotaux(){
@@ -108,16 +124,12 @@ function creerLigneProduit(produit,index){
       produit.quantite+" = "+
       (produit.prix*produit.quantite).toFixed(2)+" € ";
 
-    const dimunerBtn=creerBouton("-",()=>{
-        diminuerQuantite(index);
-    });
-    const addBtn=creerBouton("+",()=>{
-       augmenterQuantite(index);
-    });
+    const dimunerBtn=creerBouton("-",function(){diminuerQuantite(index)});
 
-    const removBtn=creerBouton("Supprimer",()=>{
-           supprimerProduit(index);
-    });
+    const addBtn=creerBouton("+",function(){augmenterQuantite(index)});
+
+    const removBtn=creerBouton("supprimer",function(){supprimerProduit(index)});
+
     ligne.appendChild(dimunerBtn);
     ligne.appendChild(addBtn);
     ligne.appendChild(removBtn);
@@ -128,7 +140,7 @@ function creerLigneProduit(produit,index){
 function afficherPanier() {
     afficherTotaux();
 
-    listComande.innerHTML = "";
+    listComande.innerHTML = "";// pour lors dajout un produit ne s affiche pas deeux fois 
 
     if (panierProduits.length === 0) {
        
@@ -139,26 +151,12 @@ function afficherPanier() {
     mesg.style.display = "none";
 
     for (let i = 0; i < panierProduits.length; i++) {
-       
-
-        listComande.appendChild(creerLigneProduit(panierProduits[i],i));
+        let toutLesLigne=creerLigneProduit(panierProduits[i],i);
+        listComande.appendChild(toutLesLigne);
     }
 }
 
-// ajout clic
-function gererClicAjout(bouton){
-      const nom = bouton.dataset.name;
-        const prix = Number(bouton.dataset.price);//dataset.price in html atribute data-Pric
-        const quantite = Number(bouton.previousElementSibling.value);
 
-        if (!quantiteValide(quantite)) {
-            alert("Veuillez choisir une quantité entière valide.");
-            return;
-        }
-        ajoutProduit(nom,prix,quantite);
-        sauvegarderPanier();
-        afficherPanier();
-}
 
 // sauvegarder les boosters achter dans  local storage
 function ajouterBoostersInventaire(){
@@ -166,14 +164,21 @@ function ajouterBoostersInventaire(){
         localStorage.getItem("mythoriaBoosters")
     ) || [];
 
-    panierProduits.forEach(produit => {
-        for (let i = 0; i < produit.quantite; i++) {
-            inventaire.push({
-                id: Date.now() + Math.random(),
-                type: produit.nom ,
-            });
+       for (const { nom, quantite } of panierProduits) {
+            const existant = inventaire.find(b=>
+                b.nom === nom
+            );
+
+            if (existant) {
+                existant.quantite += quantite;
+            } else {
+                inventaire.push({
+                    id: Math.random(),
+                    nom: nom,
+                    quantite: quantite
+                });
+            }
         }
-    });
 
     localStorage.setItem(
         "mythoriaBoosters",
@@ -193,6 +198,7 @@ function commander(){
         total.textContent +
         "\nTes boosters sont disponibles dans Ouverture."
     );
+
     vider();
 }
 
