@@ -1,1 +1,2 @@
-console.log("ok")
+let deck=JSON.parse(localStorage.getItem("mythoriaDeck")||"[]");
+console.log(deck);
