@@ -1,11 +1,9 @@
-let deck=JSON.parse(localStorage.getItem("mythoriaDeck")||"[]");
-
-import { deckAdversaire } from "./cards.js";
-export let etat={
+import { deckAdversaire , trouverCarte } from "./cards.js";
+export let   etat={ // le initiliser
     joueur: {
         hp:3000,
         main:[],
-        deck:deck,
+        deck:JSON.parse(localStorage.getItem("mythoriaDeck")||"[]"),
         camp:"lumière",
         champ: new Array(10).fill(null)
     } ,
@@ -20,7 +18,8 @@ export let etat={
     fini:false , // si gameover
     log:[] // hysto
 
-};
+    };
+
 export function tirerCarte(cible,nombre){
     // je doit parcourir le deck du cible (etat.joueur ou etat.adversaire)
     while((nombre>0)&&(cible.deck.length>0)){
@@ -36,12 +35,12 @@ export function tirerCarte(cible,nombre){
     return cible.main ;
 }
 
-export function  crrerPartie(){// lors du crrer une partie je doit initilaiser tout les donnes des jeouer et advrsaire , tirer les cartes
+export function  creerPartie(){// lors du crrer une partie je doit initilaiser tout les donnes des jeouer et advrsaire , tirer les cartes
      etat={ // le initiliser
     joueur: {
         hp:3000,
         main:[],
-        deck:deck,
+        deck:JSON.parse(localStorage.getItem("mythoriaDeck")||"[]"),
         camp:"lumière",
         champ: new Array(10).fill(null)
     } ,
@@ -58,16 +57,6 @@ export function  crrerPartie(){// lors du crrer une partie je doit initilaiser t
 
     };
     tirerCarte(etat.joueur,5);
-    tirerCarte(etat.joueur,5);
+    tirerCarte(etat.adversaire,5);
     etat.log.push('le combat commence');
-}
-export function addItem(){
-
-    
-}
-export function loadItems(){
-
-}
-export function saveItems(){
-
 }
