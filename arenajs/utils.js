@@ -10,6 +10,10 @@ export function formatDate(){
 
 export function melanger(tableau){
     for(let i=0 ;i<tableau.length;i++){
-        let indice=Math.floor(Math.random()*tableau.length);
+        let indice=Math.floor(Math.random()*(i+1));
+        let carteTemporaire=tableau[i];
+        tableau[i]=tableau[indice];
+        tableau[indice]=carteTemporaire;
     }
+    return tableau ;
 }
