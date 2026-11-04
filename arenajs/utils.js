@@ -6,3 +6,15 @@ export function melanger(tableau ){
     }
     return t;
 }
+
+export function generateId(){
+    return Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+}
+
+export function formatDate(date=new Date()){
+    return date.toLocaleString("fr-FR");
+}
+
+export function creerInstance(modele){
+    return {...modele,id:generateId()};
+}
