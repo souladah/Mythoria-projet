@@ -1,22 +1,33 @@
-import { deckAdversaire , trouverCarte } from "./cards.js";
+import {cards,deckAdversaire,trouverCarte} from "./cards.js";
+import { generateId,melanger , formatDate } from "./utils.js";
+
+export const CAMP_LUMIERE="Lumière";
+export const CAMP_TENEBRES="Ténèbres";
+
+
 export let   etat={ // le initiliser
     joueur: {
+        nom: "Joueur",
         hp:3000,
         main:[],
-        deck:JSON.parse(localStorage.getItem("mythoriaDeck")||"[]"),
-        camp:"lumière",
-        champ: new Array(10).fill(null)
+        deck:[],
+        camp:null,
+        champ: Array(10).fill(undefined)
     } ,
     adversaire :{
+        nom:"Adversaire",
         hp:3000,
-        main:[],// va contenir 5 
-        deck:deckAdversaire(),
-        camp:"Ténèbres",
-        champ: new Array(10).fill(null) // pour crrer 10 cases tout  null
+        main:[],
+        deck:[],
+        camp:null,
+        champ: Array(10).fill(undefined)
     },
     tour:1 , // contour de tour 
+    joueurActif: Math.random() < 0.5 ? "joueur" : "adversaire",
+    premierJoueur: Math.random() < 0.5 ? "joueur" : "adversaire",
     fini:false , // si gameover
-    log:[] // hysto
+    log:[] , // hysto,
+    dragSource :null
 
     };
 
