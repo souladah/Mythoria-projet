@@ -17,4 +17,12 @@ export const CARTES = [
     { nom: "Portail", image: "portail.png", rarete: "Épique", type: "Sort", attaque: 0, defense: 8 }
 ];
 
-export let HP_DEPART=3000;
+export const HP_DEPART=3000;
+export const TAILLE_DECK=16;
+export const MAIN_DEPART=3 ;
+export const COULEUR_RARETE = {
+    "Commune": "border-slate-400",
+    "Rare": "border-sky-400",
+    "Épique": "border-violet-400",
+    "Légendaire": "border-amber-400"
+};

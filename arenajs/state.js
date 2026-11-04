@@ -13,3 +13,8 @@ export const etat={
     log:[]
 };
 
+let compteurId=0;
+export function creerInstance(modele){
+    return { ...modele,id:++compteurId};
+}
+

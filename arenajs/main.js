@@ -1,6 +1,6 @@
-import { render , ajouterLog } from "./ui.js";
+import { render  } from "./ui.js";
 import { etat } from "./ui.js";
-
+import { lancerPartie } from "./turns.js";
 const dialogue=document.getElementById("dialog-start");
 const btnLumiere=document.getElementById("btn-lumiere");
 const btnTenebres=document.getElementById("btn-tenebres");
@@ -32,7 +32,7 @@ btnLumiere,addEventListener("click",()=>choisirCamp("Lumière"));
 btnLumiere,addEventListener("click",()=>choisirCamp("Ténèbres"));
 btnCommencer.addEventListener("click", () => {
     dialogue.close();
-    ajouterLog("La partie commence");
+    lancerPartie();
 });
 tirageAuSort();
 render();
