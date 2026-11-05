@@ -109,3 +109,4 @@ playerBattleFieldEl.addEventListener("drop",(event)=>{
   etat.joueur.champ[indexCase]=etat.joueur.main.splice(indexMain,1)[0];
   render();
 });
+
