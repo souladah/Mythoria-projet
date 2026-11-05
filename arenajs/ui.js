@@ -1,6 +1,5 @@
 import { etat } from "./state.js";
 import { COULEUR_RARETE } from "./cards.js";
-import { createElement } from "react";
 
 const playerHpEl=document.getElementById("player-hp");
 const opponentHpEl=document.getElementById("opponent-hp");
@@ -10,9 +9,9 @@ const handCountEl=document.getElementById("hand-count");
 const playerHandEl=document.getElementById("player-hand");
 
 function creerCarteEl(carte){
-    const div=document/createElement("div");
-    div.className="rounded-lg border-2 bg-slate-900 p-1 text=center text-white" +
-    (COULEUR_RARETE[carte.rarete]|| "border-slate-400");
+    const div = document.createElement("div");
+    div.className = "rounded-lg border-2 bg-slate-900 p-1 text-center text-white " +
+      (COULEUR_RARETE[carte.rarete] || "border-slate-400");
     const img=document.createElement("img");
     img.src="./assets/images/cards/"+carte.image;
     img.alt=carte.nom;

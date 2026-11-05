@@ -1,8 +1,11 @@
 import { HP_DEPART } from "./cards.js";
 
+function creerJoueur(nom){
+  return {nom , hp:HP_DEPART , main :[] , deck:[], camp:null , champ:[],cimetiere:[]};
+}
 export const etat={
-    joueur:{nom:"joueur",hp:HP_DEPART , main:[] , deck:[],camp:null,champ:{}},
-    Adversaire:{nom:"Adversaire",hp:HP_DEPART , main:[] , deck:[],camp:null,champ:{}},
+    joueur: creerJoueur("Joueur"),
+    Adversaire: creerJoueur("Joueur"),
     tour:1,
     joueurActif:null,
     premierJoueur:null,
@@ -13,6 +16,9 @@ export const etat={
     log:[]
 };
 
+export function autreCle(cle){
+    
+}
 let compteurId=0;
 export function creerInstance(modele){
     return { ...modele,id:++compteurId};

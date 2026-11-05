@@ -19,13 +19,7 @@ export const CARTES = [
 
 export const HP_DEPART=3000;
 export const TAILLE_DECK=16;
-export const DECK_MIN=8;
 export const MAIN_DEPART =5;
-export const MAIN_MAX=5;
-export const MAX_CHAMP=10;
-export const MULTIPLICATEUR=100;
-export const MALUS_CAMP=0.8;
-export const CAMP_DU_TYPE={"Héros": "Lumière", "Monstre": "Ténèbres"};
 export const COULEUR_RARETE = {
     "Commune": "border-slate-400",
     "Rare": "border-sky-400",
