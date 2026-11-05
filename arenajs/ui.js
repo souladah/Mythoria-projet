@@ -9,7 +9,7 @@ const handCountEl=document.getElementById("hand-count");
 const playerHandEl=document.getElementById("player-hand");
 const opponentHandCountEl=document.getElementById("opponent-hand-count");
 const opponentHandEl=document.getElementById("opponent-hand");
-
+const playerBattleFieldEl=document.getElementById("player-battlefield");
 function creerCarteEl(carte){
     const div = document.createElement("div");
     div.className = "rounded-lg border-2 bg-slate-900 p-1 text-center text-white " +
@@ -51,6 +51,11 @@ export function render(){
     const el=creerCarteEl(carte);
     el.classList.add("w-28");
     playerHandEl.appendChild(el);
+    el.draggable=true;
+    el.addEventListener("dragstart",(event)=>{
+      event.dataTransfer.setData("text/plain",String(carte.id));
+      event.dataTransfer.effectAllowed="move";
+    })
   });
 
   opponentHandEl.innerHTML="";
@@ -61,4 +66,33 @@ export function render(){
     dosCarte.setAttribute("aria-label", `Carte adverse face cachée ${index + 1}`);
     opponentHandEl.appendChild(dosCarte);
   });
+  playerBattleFieldEl.querySelectorAll("[data-slot-index]").forEach((slot) => {
+  slot.replaceChildren();
+
+  const carte = etat.joueur.champ[Number(slot.dataset.slotIndex)];
+  if (!carte) return;
+
+  const elementCarte = creerCarteEl(carte);
+  elementCarte.classList.add("w-full");
+  slot.appendChild(elementCarte);
+});
 }
+
+playerBattleFieldEl.addEventListener("dragover",(event)=>{
+  if(event.target.closest("[data-slot-index]")){
+    event.preventDefault();
+  }
+});
+
+playerBattleFieldEl.addEventListener("drop",(event)=>{
+  event.preventDefault();
+  const slot=event.target.closest("[data-slot-index]");
+  if(!slot) return ;
+  const indexCase=Number(slot.dataset.slotIndex);
+  if(etat.joueur.champ[indexCase]) return ;
+  const idCarte=event.dataTransfer.getData("text/plain");
+  const indexMain=etat.joueur.main.findIndex((carte)=>String(carte.id)===idCarte);
+  if(indexMain===-1) return ;
+  etat.joueur.champ[indexCase]=etat.joueur.main.splice(indexMain,1)[0];
+  render();
+});
