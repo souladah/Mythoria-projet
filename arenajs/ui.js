@@ -10,6 +10,7 @@ const playerHandEl=document.getElementById("player-hand");
 const opponentHandCountEl=document.getElementById("opponent-hand-count");
 const opponentHandEl=document.getElementById("opponent-hand");
 const playerBattleFieldEl=document.getElementById("player-battlefield");
+const opponentBattlefieldEl=document.getElementById("opponent-battlefield");
 function creerCarteEl(carte){
     const div = document.createElement("div");
     div.className = "rounded-lg border-2 bg-slate-900 p-1 text-center text-white " +
@@ -66,6 +67,17 @@ export function render(){
     dosCarte.setAttribute("aria-label", `Carte adverse face cachée ${index + 1}`);
     opponentHandEl.appendChild(dosCarte);
   });
+
+  opponentBattlefieldEl.querySelectorAll("[data-slot-index]").forEach((slot)=>{
+    slot.replaceChildren();
+    const carte=etat.Adversaire.champ[Number(slot.dataset.slotIndex)];
+    if(!carte) return ;
+
+    const elemntCarte=creerCarteEl(carte);
+    elemntCarte.classList.add("w-full");
+    slot.appendChild(elemntCarte);
+  });
+  
   playerBattleFieldEl.querySelectorAll("[data-slot-index]").forEach((slot) => {
   slot.replaceChildren();
 
@@ -76,6 +88,7 @@ export function render(){
   elementCarte.classList.add("w-full");
   slot.appendChild(elementCarte);
 });
+  
 }
 
 playerBattleFieldEl.addEventListener("dragover",(event)=>{
