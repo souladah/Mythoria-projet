@@ -7,6 +7,8 @@ const logList=document.getElementById("log-list");
 const deckCountEl=document.getElementById("deck-count");
 const handCountEl=document.getElementById("hand-count");
 const playerHandEl=document.getElementById("player-hand");
+const opponentHandCountEl=document.getElementById("opponent-hand-count");
+const opponentHandEl=document.getElementById("opponent-hand");
 
 function creerCarteEl(carte){
     const div = document.createElement("div");
@@ -42,10 +44,21 @@ export function render(){
 
   deckCountEl.textContent=etat.joueur.deck.length ;
   handCountEl.textContent=etat.joueur.main.length ;
+  opponentHandCountEl.textContent=etat.Adversaire.main.length;
+
   playerHandEl.innerHTML="";
   etat.joueur.main.forEach((carte)=>{
     const el=creerCarteEl(carte);
     el.classList.add("w-28");
     playerHandEl.appendChild(el);
+  });
+
+  opponentHandEl.innerHTML="";
+  etat.Adversaire.main.forEach((carte, index)=>{
+    const dosCarte=document.createElement("div");
+    dosCarte.className="flex h-24 w-16 items-center justify-center rounded-lg border-2 border-violet-300 bg-slate-900 text-xl text-violet-200";
+    dosCarte.textContent="✦";
+    dosCarte.setAttribute("aria-label", `Carte adverse face cachée ${index + 1}`);
+    opponentHandEl.appendChild(dosCarte);
   });
 }
